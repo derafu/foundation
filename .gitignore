@@ -1,3 +1,10 @@
 /var/
 /vendor/
 /composer.lock
+
+# Node.js y construcción con Vite.
+/node_modules/
+/public/dist/
+/npm-debug.log*
+/package-lock.json
+/.sharp-cache.json

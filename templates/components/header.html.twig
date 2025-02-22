@@ -1,0 +1,352 @@
+<twig:block-header
+    logoUrl="{{base_path}}/"
+    logoHtml="<span class='fw-bold text-primary'>Derafu</span> <span class='fw-normal text-muted'>ORG</span>"
+    :leftNav="[
+        {
+            text: 'Proyectos de Código Abierto',
+            icon: 'fa-brands fa-github',
+            sections: [
+                {
+                    title: 'Base para Aplicación',
+                    links: [
+                        {
+                            text: 'Base de Sitios de Derafu',
+                            url: '/foundation',
+                            icon: 'fa-solid fa-house'
+                        },
+                        {
+                            text: 'Flujo HTTP con Middlewares',
+                            url: '/http',
+                            icon: 'fa-solid fa-sitemap'
+                        },
+                        {
+                            text: 'Enrutamiento con Parsers',
+                            url: '/routing',
+                            icon: 'fa-solid fa-arrows-split-up-and-left'
+                        },
+                        {
+                            text: 'Núcleo con MicroKernel',
+                            url: '/kernel',
+                            icon: 'fa-solid fa-heart'
+                        },
+                        {
+                            text: 'Traducción con I18n/ICU',
+                            url: '/translation',
+                            icon: 'fa-solid fa-earth-americas'
+                        },
+                        {
+                            text: 'Apoyo con Helpers',
+                            url: '/support',
+                            icon: 'fa-solid fa-life-ring'
+                        }
+                    ]
+                },
+                {
+                    title: 'Manejo de Datos',
+                    links: [
+                        {
+                            text: 'Operadores y Generador de Consultas SQL',
+                            url: '/smart-query',
+                            icon: 'fa-solid fa-database'
+                        },
+                        {
+                            text: 'Procesamiento de Datos',
+                            url: '/data-processor',
+                            icon: 'fa-solid fa-list-check'
+                        },
+                        {
+                            text: 'Repositorios mediante Archivos',
+                            url: '/repository',
+                            icon: 'fa-solid fa-folder-tree'
+                        },
+                        {
+                            text: 'Configuración y Opciones',
+                            url: '/config',
+                            icon: 'fa-solid fa-cogs'
+                        },
+                        {
+                            text: 'Contenedores de Datos',
+                            url: '/container',
+                            icon: 'fa-solid fa-box-archive'
+                        },
+                        {
+                            text: 'Selección y Filtrado en Arreglos',
+                            url: '/selector',
+                            icon: 'fa-solid fa-filter'
+                        }
+                    ]
+                },
+                {
+                    title: 'Vistas y Plantillas',
+                    links: [
+                        {
+                            text: 'Renderizador Unificado',
+                            url: '/renderer',
+                            icon: 'fa-solid fa-palette'
+                        },
+                        {
+                            text: 'Componentes UX para Twig',
+                            url: '/twig',
+                            icon: 'fa-solid fa-file-code'
+                        },
+                        {
+                            text: 'Plantillas con Markdown',
+                            url: '/markdown',
+                            icon: 'fa-solid fa-file-lines'
+                        },
+                        {
+                            text: 'Formularios',
+                            url: '/form',
+                            icon: 'fa-solid fa-keyboard'
+                        },
+                        {
+                            text: 'Componentes HTML',
+                            url: '/html',
+                            icon: 'fa-solid fa-code'
+                        },
+                        {
+                            text: 'Gráficos con GD',
+                            url: '/chart',
+                            icon: 'fa-solid fa-chart-line'
+                        },
+                    ]
+                }
+            ],
+            footer: [
+                {
+                    icon: 'fa-solid fa-book',
+                    text: 'Documentación',
+                    url: '/docs'
+                },
+                {
+                    icon: 'fa-brands fa-github',
+                    text: 'Ver en Github',
+                    url: 'https://github.com/derafu'
+                }
+            ],
+        },
+        {
+            text: 'Documentación',
+            icon: 'fa-solid fa-book',
+            items: [
+                {
+                    text: 'Base de Sitios de Derafu',
+                    icon: 'fa-solid fa-house',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/foundation'
+                        }
+                    ]
+                },
+                {
+                    text: 'Flujo HTTP con Middlewares',
+                    icon: 'fa-solid fa-sitemap',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/http'
+                        }
+                    ]
+                },
+                {
+                    text: 'Enrutamiento con Parsers',
+                    icon: 'fa-solid fa-arrows-split-up-and-left',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/routing'
+                        },
+                        {
+                            type: 'divider'
+                        },
+                        {
+                            text: 'Guía en Inglés',
+                            url: '/routing/guide_en.html'
+                        },
+                        {
+                            text: 'Guía en Español',
+                            url: '/routing/guide_es.html'
+                        }
+                    ]
+                },
+                {
+                    text: 'Núcleo con MicroKernel',
+                    icon: 'fa-solid fa-heart',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/kernel'
+                        }
+                    ]
+                },
+                {
+                    text: 'Traducción con I18n/ICU',
+                    icon: 'fa-solid fa-earth-americas',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/translation'
+                        }
+                    ]
+                },
+                {
+                    text: 'Apoyo con Helpers',
+                    icon: 'fa-solid fa-life-ring',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/support'
+                        }
+                    ]
+                },
+                {
+                    type: 'divider'
+                },
+                {
+                    text: 'Operadores y Generador de Consultas SQL',
+                    icon: 'fa-solid fa-database',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/smart-query'
+                        }
+                    ]
+                },
+                {
+                    text: 'Procesamiento de Datos',
+                    icon: 'fa-solid fa-list-check',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/data-processor'
+                        }
+                    ]
+                },
+                {
+                    text: 'Repositorios mediante Archivos',
+                    icon: 'fa-solid fa-folder-tree',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/repository'
+                        }
+                    ]
+                },
+                {
+                    text: 'Configuración y Opciones',
+                    icon: 'fa-solid fa-cogs',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/config'
+                        }
+                    ]
+                },
+                {
+                    text: 'Contenedores de Datos',
+                    icon: 'fa-solid fa-box-archive',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/container'
+                        }
+                    ]
+                },
+                {
+                    text: 'Selección y Filtrado en Arreglos',
+                    icon: 'fa-solid fa-filter',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/selector'
+                        }
+                    ]
+                },
+                {
+                    type: 'divider'
+                },
+                {
+                    text: 'Renderizador Unificado',
+                    icon: 'fa-solid fa-palette',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/renderer'
+                        }
+                    ]
+                },
+                {
+                    text: 'Plantillas con Twig',
+                    icon: 'fa-solid fa-file-code',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/twig'
+                        }
+                    ]
+                },
+                {
+                    text: 'Plantillas con Markdown',
+                    icon: 'fa-solid fa-file-lines',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/markdown'
+                        }
+                    ]
+                },
+                {
+                    text: 'Formularios',
+                    icon: 'fa-solid fa-keyboard',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/form'
+                        }
+                    ]
+                },
+                {
+                    text: 'Componentes HTML',
+                    icon: 'fa-solid fa-code',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/html'
+                        }
+                    ]
+                },
+                {
+                    text: 'Gráficos con GD',
+                    icon: 'fa-solid fa-chart-line',
+                    items: [
+                        {
+                            text: 'README',
+                            url: '/chart'
+                        }
+                    ]
+                },
+            ]
+        },
+    ]"
+    :rightNav="[
+        {
+            text: 'Educación',
+            url: '#education',
+            icon: 'fa-solid fa-user-graduate'
+        },
+        {
+            text: 'Comunidad',
+            url: '#community',
+            icon: 'fa-solid fa-handshake-angle'
+        },
+        {
+            text: 'Equipo',
+            url: '#team',
+            icon: 'fa-solid fa-people-group'
+        }
+    ]"
+    ctaIcon="fa-solid fa-circle-info"
+    ctaText="Contacto & Colaboración"
+    ctaUrl="#contact"
+/>
