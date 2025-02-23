@@ -1,6 +1,8 @@
 <twig:block-header
+    id="top"
+    class="navbar-dark sticky-top bg-dark"
     logoUrl="{{base_path}}/"
-    logoHtml="<span class='fw-bold text-primary'>Derafu</span> <span class='fw-normal text-muted'>ORG</span>"
+    logoHtml="<span class='fw-bold text-primary'>Derafu</span> <span class='fw-normal text-white'>ORG</span>"
     :leftNav="[
         {
             text: 'Proyectos de Código Abierto',
@@ -11,32 +13,32 @@
                     links: [
                         {
                             text: 'Base de Sitios de Derafu',
-                            url: '/foundation',
+                            url: 'https://derafu.github.io/foundation',
                             icon: 'fa-solid fa-house'
                         },
                         {
                             text: 'Flujo HTTP con Middlewares',
-                            url: '/http',
+                            url: 'https://derafu.github.io/http',
                             icon: 'fa-solid fa-sitemap'
                         },
                         {
                             text: 'Enrutamiento con Parsers',
-                            url: '/routing',
+                            url: 'https://derafu.github.io/routing',
                             icon: 'fa-solid fa-arrows-split-up-and-left'
                         },
                         {
                             text: 'Núcleo con MicroKernel',
-                            url: '/kernel',
+                            url: 'https://derafu.github.io/kernel',
                             icon: 'fa-solid fa-heart'
                         },
                         {
                             text: 'Traducción con I18n/ICU',
-                            url: '/translation',
+                            url: 'https://derafu.github.io/translation',
                             icon: 'fa-solid fa-earth-americas'
                         },
                         {
                             text: 'Apoyo con Helpers',
-                            url: '/support',
+                            url: 'https://derafu.github.io/support',
                             icon: 'fa-solid fa-life-ring'
                         }
                     ]
@@ -46,32 +48,32 @@
                     links: [
                         {
                             text: 'Operadores y Generador de Consultas SQL',
-                            url: '/smart-query',
+                            url: 'https://derafu.github.io/smart-query',
                             icon: 'fa-solid fa-database'
                         },
                         {
                             text: 'Procesamiento de Datos',
-                            url: '/data-processor',
+                            url: 'https://derafu.github.io/data-processor',
                             icon: 'fa-solid fa-list-check'
                         },
                         {
                             text: 'Repositorios mediante Archivos',
-                            url: '/repository',
+                            url: 'https://derafu.github.io/repository',
                             icon: 'fa-solid fa-folder-tree'
                         },
                         {
                             text: 'Configuración y Opciones',
-                            url: '/config',
+                            url: 'https://derafu.github.io/config',
                             icon: 'fa-solid fa-cogs'
                         },
                         {
                             text: 'Contenedores de Datos',
-                            url: '/container',
+                            url: 'https://derafu.github.io/container',
                             icon: 'fa-solid fa-box-archive'
                         },
                         {
                             text: 'Selección y Filtrado en Arreglos',
-                            url: '/selector',
+                            url: 'https://derafu.github.io/selector',
                             icon: 'fa-solid fa-filter'
                         }
                     ]
@@ -81,32 +83,32 @@
                     links: [
                         {
                             text: 'Renderizador Unificado',
-                            url: '/renderer',
+                            url: 'https://derafu.github.io/renderer',
                             icon: 'fa-solid fa-palette'
                         },
                         {
                             text: 'Componentes UX para Twig',
-                            url: '/twig',
+                            url: 'https://derafu.github.io/twig',
                             icon: 'fa-solid fa-file-code'
                         },
                         {
                             text: 'Plantillas con Markdown',
-                            url: '/markdown',
+                            url: 'https://derafu.github.io/markdown',
                             icon: 'fa-solid fa-file-lines'
                         },
                         {
                             text: 'Formularios',
-                            url: '/form',
+                            url: 'https://derafu.github.io/form',
                             icon: 'fa-solid fa-keyboard'
                         },
                         {
                             text: 'Componentes HTML',
-                            url: '/html',
+                            url: 'https://derafu.github.io/html',
                             icon: 'fa-solid fa-code'
                         },
                         {
                             text: 'Gráficos con GD',
-                            url: '/chart',
+                            url: 'https://derafu.github.io/chart',
                             icon: 'fa-solid fa-chart-line'
                         },
                     ]
@@ -135,7 +137,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/foundation'
+                            url: 'https://derafu.github.io/foundation'
                         }
                     ]
                 },
@@ -145,7 +147,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/http'
+                            url: 'https://derafu.github.io/http'
                         }
                     ]
                 },
@@ -155,18 +157,18 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/routing'
+                            url: 'https://derafu.github.io/routing'
                         },
                         {
                             type: 'divider'
                         },
                         {
                             text: 'Guía en Inglés',
-                            url: '/routing/guide_en.html'
+                            url: 'https://derafu.github.io/routing/guide_en.html'
                         },
                         {
                             text: 'Guía en Español',
-                            url: '/routing/guide_es.html'
+                            url: 'https://derafu.github.io/routing/guide_es.html'
                         }
                     ]
                 },
@@ -176,7 +178,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/kernel'
+                            url: 'https://derafu.github.io/kernel'
                         }
                     ]
                 },
@@ -186,7 +188,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/translation'
+                            url: 'https://derafu.github.io/translation'
                         }
                     ]
                 },
@@ -196,7 +198,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/support'
+                            url: 'https://derafu.github.io/support'
                         }
                     ]
                 },
@@ -209,7 +211,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/smart-query'
+                            url: 'https://derafu.github.io/smart-query'
                         }
                     ]
                 },
@@ -219,7 +221,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/data-processor'
+                            url: 'https://derafu.github.io/data-processor'
                         }
                     ]
                 },
@@ -229,7 +231,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/repository'
+                            url: 'https://derafu.github.io/repository'
                         }
                     ]
                 },
@@ -239,7 +241,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/config'
+                            url: 'https://derafu.github.io/config'
                         }
                     ]
                 },
@@ -249,7 +251,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/container'
+                            url: 'https://derafu.github.io/container'
                         }
                     ]
                 },
@@ -259,7 +261,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/selector'
+                            url: 'https://derafu.github.io/selector'
                         }
                     ]
                 },
@@ -272,7 +274,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/renderer'
+                            url: 'https://derafu.github.io/renderer'
                         }
                     ]
                 },
@@ -282,7 +284,15 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/twig'
+                            url: 'https://derafu.github.io/twig'
+                        },
+                        {
+                            text: 'Temas Predefinidos',
+                            url: 'https://derafu.github.io/twig/demo/themes/predefined.html'
+                        },
+                        {
+                            text: 'Componentes',
+                            url: 'https://derafu.github.io/twig/components.html'
                         }
                     ]
                 },
@@ -292,7 +302,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/markdown'
+                            url: 'https://derafu.github.io/markdown'
                         }
                     ]
                 },
@@ -302,7 +312,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/form'
+                            url: 'https://derafu.github.io/form'
                         }
                     ]
                 },
@@ -312,7 +322,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/html'
+                            url: 'https://derafu.github.io/html'
                         }
                     ]
                 },
@@ -322,7 +332,7 @@
                     items: [
                         {
                             text: 'README',
-                            url: '/chart'
+                            url: 'https://derafu.github.io/chart'
                         }
                     ]
                 },

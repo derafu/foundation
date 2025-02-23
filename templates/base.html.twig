@@ -11,8 +11,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet" />
     <link href="{{ base_path }}/dist/css/styles.min.css" rel="stylesheet" />
     {% block stylesheets %}{% endblock %}
+    <style>
+        section {
+            scroll-margin-top: 5rem;
+        }
+    </style>
 </head>
-<body class="derafu-theme-default">
+<body class="derafu-theme-earthstone">
     {% block body %}{% endblock %}
 
     {# JS común #}
