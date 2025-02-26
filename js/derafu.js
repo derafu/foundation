@@ -5,7 +5,7 @@ function loadDerafuHeader(containerId) {
 <nav class="derafu-block-header navbar navbar-expand-lg  navbar-dark sticky-top bg-dark"
            id="top">
     <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <a class="navbar-brand d-flex align-items-center" href="/">
                                         <span class="ms-2"><span class='fw-bold text-primary'>Derafu</span> <span class='fw-normal text-white'>ORG</span></span>
                     </a>
 
@@ -16,7 +16,7 @@ function loadDerafuHeader(containerId) {
                 <div class="collapse navbar-collapse" id="navbarContent">
                         <ul class="navbar-nav me-auto">
                                         <li class="nav-item dropdown mega-menu-wrapper">
-                <a class="nav-link dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                             <i class="fa-brands fa-github me-1"></i>
                                         Proyectos de Código Abierto
                 </a>
@@ -107,7 +107,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </div>
                                                     </div>
                                                     <div class="mega-dropdown-footer">
-                                                                                                            <a href="http://127.0.0.1:9000/docs" class="mega-dropdown-footer-item">
+                                                                                                            <a href="/docs" class="mega-dropdown-footer-item">
                                                                                             <i class="fa-solid fa-book me-1"></i>
                                                                                         Documentación
                                         </a>
@@ -120,13 +120,13 @@ function loadDerafuHeader(containerId) {
                 </div>
             </li>
                                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                             <i class="fa-solid fa-book me-1"></i>
                                         Documentación
                 </a>
                 <ul class="dropdown-menu ">
                                                                         <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-house me-1"></i>
                                                                         Base de Sitios de Derafu
                                 </a>
@@ -139,7 +139,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-sitemap me-1"></i>
                                                                         Flujo HTTP con Middlewares
                                 </a>
@@ -152,7 +152,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-arrows-split-up-and-left me-1"></i>
                                                                         Enrutamiento con Parsers
                                 </a>
@@ -176,7 +176,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-heart me-1"></i>
                                                                         Núcleo con MicroKernel
                                 </a>
@@ -189,7 +189,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-earth-americas me-1"></i>
                                                                         Traducción con I18n/ICU
                                 </a>
@@ -202,7 +202,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-life-ring me-1"></i>
                                                                         Apoyo con Helpers
                                 </a>
@@ -216,7 +216,7 @@ function loadDerafuHeader(containerId) {
                             </li>
                                                                                                 <li><hr class="dropdown-divider"></li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-database me-1"></i>
                                                                         Operadores y Generador de Consultas SQL
                                 </a>
@@ -229,7 +229,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-list-check me-1"></i>
                                                                         Procesamiento de Datos
                                 </a>
@@ -242,7 +242,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-folder-tree me-1"></i>
                                                                         Repositorios mediante Archivos
                                 </a>
@@ -255,7 +255,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-cogs me-1"></i>
                                                                         Configuración y Opciones
                                 </a>
@@ -268,7 +268,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-box-archive me-1"></i>
                                                                         Contenedores de Datos
                                 </a>
@@ -281,7 +281,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-filter me-1"></i>
                                                                         Selección y Filtrado en Arreglos
                                 </a>
@@ -295,7 +295,7 @@ function loadDerafuHeader(containerId) {
                             </li>
                                                                                                 <li><hr class="dropdown-divider"></li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-palette me-1"></i>
                                                                         Renderizador Unificado
                                 </a>
@@ -308,7 +308,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-file-code me-1"></i>
                                                                         Plantillas con Twig
                                 </a>
@@ -331,7 +331,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-file-lines me-1"></i>
                                                                         Plantillas con Markdown
                                 </a>
@@ -344,7 +344,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-keyboard me-1"></i>
                                                                         Formularios
                                 </a>
@@ -357,7 +357,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-code me-1"></i>
                                                                         Componentes HTML
                                 </a>
@@ -370,7 +370,7 @@ function loadDerafuHeader(containerId) {
                                                                                                             </ul>
                             </li>
                                                                                                 <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="derafu.js.html#" role="button" data-bs-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                                                             <i class="fa-solid fa-chart-line me-1"></i>
                                                                         Gráficos con GD
                                 </a>
@@ -389,25 +389,25 @@ function loadDerafuHeader(containerId) {
 
                         <ul class="navbar-nav">
                                         <li class="nav-item">
-                <a class="nav-link" href="derafu.js.html#software">
+                <a class="nav-link" href="#software">
                                             <i class="fa-solid fa-code me-1"></i>
                                         Software
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="derafu.js.html#education">
+                <a class="nav-link" href="#education">
                                             <i class="fa-solid fa-user-graduate me-1"></i>
                                         Educación
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="derafu.js.html#community">
+                <a class="nav-link" href="#community">
                                             <i class="fa-solid fa-handshake-angle me-1"></i>
                                         Comunidad
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="derafu.js.html#team">
+                <a class="nav-link" href="#team">
                                             <i class="fa-solid fa-people-group me-1"></i>
                                         Equipo
                 </a>
@@ -415,7 +415,7 @@ function loadDerafuHeader(containerId) {
             
 
                                                     <li class="nav-item ms-2">
-                        <a href="derafu.js.html#contact" class="btn btn-primary">
+                        <a href="#contact" class="btn btn-primary">
                                                             <i class="fa-solid fa-circle-info me-1"></i>
                                                         Contacto &amp; Colaboración
                         </a>
@@ -469,7 +469,7 @@ function loadDerafuFooter(containerId) {
                                                                 <div class="derafu-block-footer__text mb-4">Si estás interesado en contribuir o colaborar, contáctanos.</div>
                                                                 <ul class="derafu-block-footer__links list-unstyled">
                                                             <li>
-                                    <a href="derafu.js.html" >
+                                    <a href="" >
                                                                                     <i class="fa-solid fa-envelope derafu-email me-2"></i>
                                                                                 
                                     </a>
