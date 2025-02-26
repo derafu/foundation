@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Install Node.js dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build with Vite
         run: npm run build
