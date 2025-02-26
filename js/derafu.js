@@ -389,25 +389,25 @@ function loadDerafuHeader(containerId) {
 
                         <ul class="navbar-nav">
                                         <li class="nav-item">
-                <a class="nav-link" href="#software">
+                <a class="nav-link" href="/#software">
                                             <i class="fa-solid fa-code me-1"></i>
                                         Software
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="#education">
+                <a class="nav-link" href="/#education">
                                             <i class="fa-solid fa-user-graduate me-1"></i>
                                         Educación
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="#community">
+                <a class="nav-link" href="/#community">
                                             <i class="fa-solid fa-handshake-angle me-1"></i>
                                         Comunidad
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="#team">
+                <a class="nav-link" href="/#team">
                                             <i class="fa-solid fa-people-group me-1"></i>
                                         Equipo
                 </a>
