@@ -20,8 +20,8 @@ use Composer\Script\Event;
 final class Installer
 {
     private const FILES = [
+        '.github/workflows/cd.yml',
         '.github/workflows/ci.yml',
-        '.github/workflows/website.yml',
         'app/bootstrap.php' => true,
         'assets/css/app.css',
         'assets/img/.empty',
