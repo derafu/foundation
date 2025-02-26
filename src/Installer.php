@@ -30,6 +30,7 @@ final class Installer
         'config/routes.yaml',
         'config/services.yaml',
         'public/index.php' => true,
+        'src/.empty',
         'templates/components/footer.html.twig',
         'templates/components/header.html.twig',
         'templates/layouts/default.html.twig',
