@@ -38,7 +38,6 @@ final class Installer
         'templates/error.html.twig' => true,
         'templates/html.html.twig' => true,
         '.gitignore',
-        'composer.json',
         'LICENSE',
         'package.json',
         'php-cs-fixer.php' => true,

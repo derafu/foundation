@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/derafu/example.git"
+    "url": "git+https://github.com/derafu/project.git"
   },
   "keywords": [],
   "author": "Esteban De La Fuente Rubio / Derafu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/derafu/example/issues"
+    "url": "https://github.com/derafu/project/issues"
   },
-  "homepage": "https://github.com/derafu/example#readme",
+  "homepage": "https://github.com/derafu/project#readme",
   "devDependencies": {
     "vite": "^6.1.1",
     "vite-plugin-sharp": "^1.0.0"
