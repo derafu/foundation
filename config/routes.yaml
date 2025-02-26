@@ -15,3 +15,7 @@
 - route: /js/derafu.js
   handler: '%kernel.project_dir%/templates/derafu.js.twig'
   name: derafu-js
+  parameters:
+    derafu_email_class: derafu-email
+    derafu_email_user: derafu
+    derafu_email_domain: derafu.org
