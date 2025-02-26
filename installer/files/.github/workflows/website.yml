@@ -14,7 +14,7 @@ env:
 
 jobs:
   deploy:
-    if: ${{ env.WORKFLOW_WEBSITE_ENABLED == 'true' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'}}
+    if: ${{ false && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'}}
     name: Deploy Static Website
     timeout-minutes: 10
     runs-on: ${{ matrix.os }}
