@@ -1,8 +1,8 @@
 {
-    "name": "derafu/foundation",
-    "description": "Derafu: Foundation - Base for Derafu's Projects",
-    "type": "library",
-    "homepage": "https://derafu.org/foundation",
+    "name": "derafu/example",
+    "description": "Derafu: Project - Slogan",
+    "type": "project",
+    "homepage": "https://derafu.org/example",
     "license": "MIT",
     "authors": [
         {
@@ -11,24 +11,21 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/derafu/foundation/issues",
-        "source": "https://github.com/derafu/foundation"
+        "issues": "https://github.com/derafu/example/issues",
+        "source": "https://github.com/derafu/example"
     },
     "autoload": {
         "psr-4": {
-            "Derafu\\Foundation\\": "src/"
+            "Derafu\\Project\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Derafu\\TestsFoundation\\": "tests/src/"
+            "Derafu\\TestsProject\\": "tests/src/"
         }
     },
     "require": {
-        "php": "^8.3",
-        "derafu/http": "dev-main",
-        "derafu/markdown": "^1.0",
-        "composer/installers": "^2.3"
+        "php": "^8.3"
     },
     "require-dev": {
         "ext-xdebug": "*",
@@ -43,19 +40,8 @@
         "phpcs-fix-dry-run": "php-cs-fixer fix -v --dry-run --diff --config=php-cs-fixer.php",
         "phpstan": "phpstan analyse --configuration=phpstan.neon --memory-limit=1G",
         "phpstan-export": "phpstan analyse --configuration=phpstan.neon --level 9 --generate-baseline",
-        "build": "npm run build",
-        "post-install-cmd": [
-            "Derafu\\Foundation\\Installer::copyFiles"
-        ],
-        "post-update-cmd": [
-            "Derafu\\Foundation\\Installer::copyFiles"
-        ]
+        "build": "npm run build"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "allow-plugins": {
-            "composer/installers": true
-        }
-    }
+    "prefer-stable": true
 }

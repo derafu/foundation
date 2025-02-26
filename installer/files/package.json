@@ -1,7 +1,7 @@
 {
-  "name": "derafu-foundation",
+  "name": "derafu-project",
   "version": "1.0.0",
-  "description": "Derafu: Foundation - Base for Derafu's Projects",
+  "description": "Derafu: Project - Slogan",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/derafu/foundation.git"
+    "url": "git+https://github.com/derafu/example.git"
   },
   "keywords": [],
   "author": "Esteban De La Fuente Rubio / Derafu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/derafu/foundation/issues"
+    "url": "https://github.com/derafu/example/issues"
   },
-  "homepage": "https://github.com/derafu/foundation#readme",
+  "homepage": "https://github.com/derafu/example#readme",
   "devDependencies": {
     "vite": "^6.1.1",
     "vite-plugin-sharp": "^1.0.0"

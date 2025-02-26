@@ -9,5 +9,9 @@
   name: readme
 
 - route: error
-  handler: '%kernel.project_dir%/templates/default/error.html.twig'
+  handler: '%kernel.project_dir%/templates/error.html.twig'
   name: errorpage
+
+- route: /js/derafu.js
+  handler: '%kernel.project_dir%/templates/derafu.js.twig'
+  name: derafu-js

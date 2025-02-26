@@ -1,10 +1,11 @@
 {# layouts/default.html.twig #}
 {% extends 'base.html.twig' %}
 
+{% block title %}Derafu: Project - Slogan{% endblock %}
+
 {% block body %}
     {% block header %}
-        <div id="header-container" class="sticky-top"></div>
-        {# {% include 'components/header.html.twig' %} #}
+        {% include 'components/header.html.twig' %}
     {% endblock %}
 
     {% block main %}
@@ -14,8 +15,6 @@
     {% endblock %}
 
     {% block footer %}
-        <div id="footer-container"></div>
-        {# {% include 'components/footer.html.twig' %} #}
+        {% include 'components/footer.html.twig' %}
     {% endblock %}
-    <script src="{{ base_path }}/js/derafu.js"></script>
 {% endblock %}

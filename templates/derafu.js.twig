@@ -1,0 +1,16 @@
+function loadDerafuHeader(containerId) {
+    document.getElementById(containerId).innerHTML = `
+        {% include 'components/header.html.twig' %}
+    `;
+}
+
+function loadDerafuFooter(containerId) {
+    document.getElementById(containerId).innerHTML = `
+        {% include 'components/footer.html.twig' %}
+    `;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadDerafuHeader('header-container');
+    loadDerafuFooter('footer-container');
+});
