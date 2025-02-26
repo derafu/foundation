@@ -26,81 +26,81 @@ function loadDerafuHeader(containerId) {
                         <div class="row">
                                                             <div class="col mb-4">
                                     <h6 class="dropdown-header">Base para Aplicación</h6>
-                                                                                                                        <a class="dropdown-item" href="https://derafu.github.io/foundation">
+                                                                                                                        <a class="dropdown-item" href="https://derafu.org/foundation">
                                                                                                     <i class="fa-solid fa-house me-1"></i>
                                                                                                 Base de Sitios de Derafu
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/http">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/http">
                                                                                                     <i class="fa-solid fa-sitemap me-1"></i>
                                                                                                 Flujo HTTP con Middlewares
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/routing">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/routing">
                                                                                                     <i class="fa-solid fa-arrows-split-up-and-left me-1"></i>
                                                                                                 Enrutamiento con Parsers
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/kernel">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/kernel">
                                                                                                     <i class="fa-solid fa-heart me-1"></i>
                                                                                                 Núcleo con MicroKernel
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/translation">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/translation">
                                                                                                     <i class="fa-solid fa-earth-americas me-1"></i>
                                                                                                 Traducción con I18n/ICU
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/support">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/support">
                                                                                                     <i class="fa-solid fa-life-ring me-1"></i>
                                                                                                 Apoyo con Helpers
                                             </a>
                                                                                                             </div>
                                                             <div class="col mb-4">
                                     <h6 class="dropdown-header">Manejo de Datos</h6>
-                                                                                                                        <a class="dropdown-item" href="https://derafu.github.io/query">
+                                                                                                                        <a class="dropdown-item" href="https://derafu.org/query">
                                                                                                     <i class="fa-solid fa-database me-1"></i>
                                                                                                 Operadores y Generador de Consultas SQL
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/data-processor">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/data-processor">
                                                                                                     <i class="fa-solid fa-list-check me-1"></i>
                                                                                                 Procesamiento de Datos
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/repository">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/repository">
                                                                                                     <i class="fa-solid fa-folder-tree me-1"></i>
                                                                                                 Repositorios mediante Archivos
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/config">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/config">
                                                                                                     <i class="fa-solid fa-cogs me-1"></i>
                                                                                                 Configuración y Opciones
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/container">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/container">
                                                                                                     <i class="fa-solid fa-box-archive me-1"></i>
                                                                                                 Contenedores de Datos
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/selector">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/selector">
                                                                                                     <i class="fa-solid fa-filter me-1"></i>
                                                                                                 Selección y Filtrado en Arreglos
                                             </a>
                                                                                                             </div>
                                                             <div class="col mb-4">
                                     <h6 class="dropdown-header">Vistas y Plantillas</h6>
-                                                                                                                        <a class="dropdown-item" href="https://derafu.github.io/renderer">
+                                                                                                                        <a class="dropdown-item" href="https://derafu.org/renderer">
                                                                                                     <i class="fa-solid fa-palette me-1"></i>
                                                                                                 Renderizador Unificado
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/twig">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/twig">
                                                                                                     <i class="fa-solid fa-file-code me-1"></i>
                                                                                                 Componentes UX para Twig
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/markdown">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/markdown">
                                                                                                     <i class="fa-solid fa-file-lines me-1"></i>
                                                                                                 Plantillas con Markdown
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/form">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/form">
                                                                                                     <i class="fa-solid fa-keyboard me-1"></i>
                                                                                                 Formularios
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/html">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/html">
                                                                                                     <i class="fa-solid fa-code me-1"></i>
                                                                                                 Componentes HTML
                                             </a>
-                                                                                                                                                                <a class="dropdown-item" href="https://derafu.github.io/chart">
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/chart">
                                                                                                     <i class="fa-solid fa-chart-line me-1"></i>
                                                                                                 Gráficos con GD
                                             </a>
@@ -132,7 +132,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/foundation">
+                                                <a class="dropdown-item" href="https://derafu.org/foundation">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -145,7 +145,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/http">
+                                                <a class="dropdown-item" href="https://derafu.org/http">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -158,18 +158,18 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/routing">
+                                                <a class="dropdown-item" href="https://derafu.org/routing">
                                                                                                         README
                                                 </a>
                                             </li>
                                                                                                                                                                 <li><hr class="dropdown-divider"></li>
                                                                                                                                                                 <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/routing/guide_en.html">
+                                                <a class="dropdown-item" href="https://derafu.org/routing/guide_en.html">
                                                                                                         Guía en Inglés
                                                 </a>
                                             </li>
                                                                                                                                                                 <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/routing/guide_es.html">
+                                                <a class="dropdown-item" href="https://derafu.org/routing/guide_es.html">
                                                                                                         Guía en Español
                                                 </a>
                                             </li>
@@ -182,7 +182,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/kernel">
+                                                <a class="dropdown-item" href="https://derafu.org/kernel">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -195,7 +195,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/translation">
+                                                <a class="dropdown-item" href="https://derafu.org/translation">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -208,7 +208,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/support">
+                                                <a class="dropdown-item" href="https://derafu.org/support">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -222,7 +222,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/query">
+                                                <a class="dropdown-item" href="https://derafu.org/query">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -235,7 +235,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/data-processor">
+                                                <a class="dropdown-item" href="https://derafu.org/data-processor">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -248,7 +248,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/repository">
+                                                <a class="dropdown-item" href="https://derafu.org/repository">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -261,7 +261,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/config">
+                                                <a class="dropdown-item" href="https://derafu.org/config">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -274,7 +274,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/container">
+                                                <a class="dropdown-item" href="https://derafu.org/container">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -287,7 +287,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/selector">
+                                                <a class="dropdown-item" href="https://derafu.org/selector">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -301,7 +301,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/renderer">
+                                                <a class="dropdown-item" href="https://derafu.org/renderer">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -314,17 +314,17 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/twig">
+                                                <a class="dropdown-item" href="https://derafu.org/twig">
                                                                                                         README
                                                 </a>
                                             </li>
                                                                                                                                                                 <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/twig/demo/themes/predefined.html">
+                                                <a class="dropdown-item" href="https://derafu.org/twig/demo/themes/predefined.html">
                                                                                                         Temas Predefinidos
                                                 </a>
                                             </li>
                                                                                                                                                                 <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/twig/components.html">
+                                                <a class="dropdown-item" href="https://derafu.org/twig/components.html">
                                                                                                         Componentes
                                                 </a>
                                             </li>
@@ -337,7 +337,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/markdown">
+                                                <a class="dropdown-item" href="https://derafu.org/markdown">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -350,7 +350,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/form">
+                                                <a class="dropdown-item" href="https://derafu.org/form">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -363,7 +363,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/html">
+                                                <a class="dropdown-item" href="https://derafu.org/html">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -376,7 +376,7 @@ function loadDerafuHeader(containerId) {
                                 </a>
                                 <ul class="dropdown-menu submenu">
                                                                                                                         <li>
-                                                <a class="dropdown-item" href="https://derafu.github.io/chart">
+                                                <a class="dropdown-item" href="https://derafu.org/chart">
                                                                                                         README
                                                 </a>
                                             </li>
@@ -389,25 +389,25 @@ function loadDerafuHeader(containerId) {
 
                         <ul class="navbar-nav">
                                         <li class="nav-item">
-                <a class="nav-link" href="/#software">
+                <a class="nav-link" href="https://derafu.org/#software">
                                             <i class="fa-solid fa-code me-1"></i>
                                         Software
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="/#education">
+                <a class="nav-link" href="https://derafu.org/#education">
                                             <i class="fa-solid fa-user-graduate me-1"></i>
                                         Educación
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="/#community">
+                <a class="nav-link" href="https://derafu.org/#community">
                                             <i class="fa-solid fa-handshake-angle me-1"></i>
                                         Comunidad
                 </a>
             </li>
                                 <li class="nav-item">
-                <a class="nav-link" href="/#team">
+                <a class="nav-link" href="https://derafu.org/#team">
                                             <i class="fa-solid fa-people-group me-1"></i>
                                         Equipo
                 </a>
@@ -437,25 +437,25 @@ function loadDerafuFooter(containerId) {
                                             <h5 class="derafu-block-footer__title mb-4">Proyectos Destacados</h5>
                                                                                     <ul class="derafu-block-footer__links list-unstyled">
                                                             <li>
-                                    <a href="https://derafu.github.io/twig" >
+                                    <a href="https://derafu.org/twig" >
                                                                                     <i class="fa-solid fa-file-code me-2"></i>
                                                                                 Componentes UX para Twig
                                     </a>
                                 </li>
                                                             <li>
-                                    <a href="https://derafu.github.io/query" >
+                                    <a href="https://derafu.org/query" >
                                                                                     <i class="fa-solid fa-database me-2"></i>
                                                                                 Operadores y Generador de Consultas SQL
                                     </a>
                                 </li>
                                                             <li>
-                                    <a href="https://derafu.github.io/data-processor" >
+                                    <a href="https://derafu.org/data-processor" >
                                                                                     <i class="fa-solid fa-list-check me-2"></i>
                                                                                 Procesamiento de Datos
                                     </a>
                                 </li>
                                                             <li>
-                                    <a href="https://derafu.github.io/selector" >
+                                    <a href="https://derafu.org/selector" >
                                                                                     <i class="fa-solid fa-filter me-2"></i>
                                                                                 Selección y Filtrado en Arreglos
                                     </a>
