@@ -37,6 +37,8 @@ final class Installer
         'templates/base.html.twig' => true,
         'templates/error.html.twig' => true,
         'templates/html.html.twig' => true,
+        'tests/fixtures/.empty',
+        'tests/src/DummyTest.php',
         '.gitignore',
         'LICENSE',
         'package.json',

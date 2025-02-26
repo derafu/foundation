@@ -9,6 +9,14 @@ You need to have PHP and Composer installed, then run:
 composer create-project derafu/project project_dir --stability=dev
 ```
 
+To run, enter the project directory and start the PHP server:
+
+```shell
+php -S localhost:9000 public/index.php
+```
+
+Then go to http://localhost:9000
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
