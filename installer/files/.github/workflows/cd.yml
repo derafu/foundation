@@ -1,4 +1,4 @@
-name: Deploy Static Website
+name: CD
 
 on:
   workflow_run:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'}}
+    if: ${{ false && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'}}
     name: Deploy Static Website
     timeout-minutes: 10
     runs-on: ${{ matrix.os }}
@@ -38,7 +38,7 @@ jobs:
         run: composer install --no-progress --no-suggest --prefer-dist
 
       - name: Start PHP server
-        run: php -d display_errors=1 -S 127.0.0.1:9000 -t public/index.php &
+        run: php -d display_errors=1 -S 127.0.0.1:9000 public/index.php &
 
       - name: Download static HTML with wget
         run: |
