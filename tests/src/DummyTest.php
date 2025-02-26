@@ -12,8 +12,11 @@ declare(strict_types=1);
 
 namespace Derafu\TestsHttp;
 
+use Derafu\Foundation\Installer;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Installer::class)]
 class DummyTest extends TestCase
 {
     public function testDummyAssertTrue(): void
