@@ -67,4 +67,4 @@ services:
                 engines: ['twig', 'markdown']
                 paths:
                     - '%kernel.project_dir%/templates'
-                    - '%kernel.project_dir%/vendor/derafu/twig/templates'
+                    - '%kernel.project_dir%/vendor/derafu/twig/resources/templates'
