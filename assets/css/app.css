@@ -1,5 +1,7 @@
 /* Import base CSS from derafu/twig package */
 @import '../../vendor/derafu/twig/assets/css/derafu-twig.css';
+@import 'titles.css';
+@import 'code.css';
 
 section {
     scroll-margin-top: 5rem;

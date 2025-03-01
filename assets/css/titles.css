@@ -1,0 +1,107 @@
+/* Estilos base para todos los encabezados */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #333;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
+}
+
+/* Estilos base para todos los encabezados basados en Bootstrap 5 */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #212529;
+}
+
+/* H1 - Título principal */
+h1 {
+    font-size: 2.5rem; /* Tamaño Bootstrap 5 */
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #dee2e6; /* Color Bootstrap */
+    font-weight: 600;
+}
+
+/* H2 - Subtítulo principal */
+h2 {
+    font-size: 2rem; /* Tamaño Bootstrap 5 */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #e9ecef; /* Más sutil que h1 */
+    font-weight: 600;
+}
+
+/* H3 - Encabezado de sección */
+h3 {
+    font-size: 1.75rem; /* Tamaño Bootstrap 5 */
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+/* H4 - Subtítulo de sección */
+h4 {
+    font-size: 1.5rem; /* Tamaño Bootstrap 5 */
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* H5 - Encabezado menor */
+h5 {
+    font-size: 1.25rem; /* Tamaño Bootstrap 5 */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* H6 - Encabezado más pequeño */
+h6 {
+    font-size: 1rem; /* Tamaño Bootstrap 5 */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #495057; /* Un poco más claro que los otros encabezados */
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    h5, h6 {
+        font-size: 1rem;
+    }
+}
+
+/* Mejoras visuales sutiles */
+h1, h2 {
+    letter-spacing: -0.01em; /* Ligero ajuste de espaciado para títulos grandes */
+}
+
+h3, h4 {
+    letter-spacing: -0.005em;
+}
+
+/* Agregar un estilo distintivo a los h6 */
+h6 {
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+}
