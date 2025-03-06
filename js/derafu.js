@@ -18,14 +18,14 @@ function loadDerafuHeader(containerId) {
                                         <li class="nav-item dropdown mega-menu-wrapper">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                             <i class="fa-brands fa-github me-1"></i>
-                                        Proyectos de Código Abierto
+                                        Proyectos de Software Libre
                 </a>
                 <div class="dropdown-menu mega-dropdown">
                     <div class="container">
-                        <div class="mega-dropdown-header">Proyectos de Código Abierto</div>
+                        <div class="mega-dropdown-header">Proyectos de Software Libre</div>
                         <div class="row">
-                                                            <div class="col mb-4">
-                                    <h6 class="dropdown-header">Base para Aplicación</h6>
+                                                            <div class="col-4 mb-4">
+                                    <h6 class="dropdown-header">Base para Aplicaciones</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/foundation">
                                                                                                     <i class="fa-solid fa-house me-1"></i>
                                                                                                 Base de Sitios de Derafu
@@ -46,12 +46,16 @@ function loadDerafuHeader(containerId) {
                                                                                                     <i class="fa-solid fa-earth-americas me-1"></i>
                                                                                                 Traducción con I18n/ICU
                                             </a>
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/log">
+                                                                                                    <i class="fa-solid fa-history me-1"></i>
+                                                                                                Bitácora de registros
+                                            </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/support">
                                                                                                     <i class="fa-solid fa-life-ring me-1"></i>
                                                                                                 Apoyo con Helpers
                                             </a>
                                                                                                             </div>
-                                                            <div class="col mb-4">
+                                                            <div class="col-4 mb-4">
                                     <h6 class="dropdown-header">Manejo de Datos</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/query">
                                                                                                     <i class="fa-solid fa-database me-1"></i>
@@ -77,8 +81,12 @@ function loadDerafuHeader(containerId) {
                                                                                                     <i class="fa-solid fa-filter me-1"></i>
                                                                                                 Selección y Filtrado en Arreglos
                                             </a>
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/xml">
+                                                                                                    <i class="fa-solid fa-code me-1"></i>
+                                                                                                Codificación y validación de XML
+                                            </a>
                                                                                                             </div>
-                                                            <div class="col mb-4">
+                                                            <div class="col-4 mb-4">
                                     <h6 class="dropdown-header">Vistas y Plantillas</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/renderer">
                                                                                                     <i class="fa-solid fa-palette me-1"></i>
@@ -96,8 +104,12 @@ function loadDerafuHeader(containerId) {
                                                                                                     <i class="fa-solid fa-keyboard me-1"></i>
                                                                                                 Formularios
                                             </a>
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/vanilla-js">
+                                                                                                    <i class="fa-brands fa-js me-1"></i>
+                                                                                                Vanilla JS
+                                            </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/html">
-                                                                                                    <i class="fa-solid fa-code me-1"></i>
+                                                                                                    <i class="fa-brands fa-html5 me-1"></i>
                                                                                                 Componentes HTML
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/chart">
@@ -105,9 +117,46 @@ function loadDerafuHeader(containerId) {
                                                                                                 Gráficos con GD
                                             </a>
                                                                                                             </div>
+                                                            <div class="col-4 mb-4">
+                                    <h6 class="dropdown-header">Servicios para Aplicaciones</h6>
+                                                                                                                        <a class="dropdown-item" href="https://derafu.org/mail">
+                                                                                                    <i class="fa-solid fa-envelope me-1"></i>
+                                                                                                Envío de Correos
+                                            </a>
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/api">
+                                                                                                    <i class="fa-solid fa-server me-1"></i>
+                                                                                                API con Autodescubrimiento
+                                            </a>
+                                                                                                            </div>
+                                                            <div class="col-4 mb-4">
+                                    <h6 class="dropdown-header">Seguridad y Autenticación</h6>
+                                                                                                                        <a class="dropdown-item" href="https://derafu.org/certificate">
+                                                                                                    <i class="fa-solid fa-certificate me-1"></i>
+                                                                                                Certificados Digitales
+                                            </a>
+                                                                                                                                                                <a class="dropdown-item" href="https://derafu.org/signature">
+                                                                                                    <i class="fa-solid fa-signature me-1"></i>
+                                                                                                Firma Digital y XML-DSIG
+                                            </a>
+                                                                                                            </div>
+                                                            <div class="col-4 mb-4">
+                                    <h6 class="dropdown-header">L10n: Chile</h6>
+                                                                                                                        <a class="dropdown-item" href="https://github.com/derafu/l10n-cl-rut">
+                                                                                                    <i class="fa-solid fa-id-badge me-1"></i>
+                                                                                                Formateo y validación de RUN/RUT
+                                            </a>
+                                                                                                                                                                <a class="dropdown-item" href="https://github.com/derafu/l10n-cl-enum">
+                                                                                                    <i class="fa-solid fa-list me-1"></i>
+                                                                                                Colección de enums
+                                            </a>
+                                                                                                            </div>
                                                     </div>
                                                     <div class="mega-dropdown-footer">
-                                                                                                            <a href="/docs" class="mega-dropdown-footer-item">
+                                                                                                            <a href="/free-software" class="mega-dropdown-footer-item">
+                                                                                            <i class="fa-solid fa-box-open me-1"></i>
+                                                                                        Ver más Software Libre
+                                        </a>
+                                                                                                                                                <a href="/docs" class="mega-dropdown-footer-item">
                                                                                             <i class="fa-solid fa-book me-1"></i>
                                                                                         Documentación
                                         </a>
