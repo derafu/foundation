@@ -1,9 +1,11 @@
 # Derafu: Project - Slogan
 
-<!---
-[![CI Workflow](https://github.com/derafu/project/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/derafu/project/actions/workflows/ci.yml?query=branch%3Amain)
--->
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![GitHub last commit](https://img.shields.io/github/last-commit/derafu/project/main)
+![CI Workflow](https://github.com/derafu/project/actions/workflows/ci.yml/badge.svg?branch=main&event=push)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/derafu/project)
+![GitHub Issues](https://img.shields.io/github/issues-raw/derafu/project)
+![Total Downloads](https://poser.pugx.org/derafu/project/downloads)
+![Monthly Downloads](https://poser.pugx.org/derafu/project/d/monthly)
 
 > To infinity and beyond.
 

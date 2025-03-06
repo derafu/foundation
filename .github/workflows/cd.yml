@@ -47,7 +47,7 @@ jobs:
         run: npm run build
 
       - name: Start PHP server
-        run: php -d display_errors=1 -S 127.0.0.1:9000 public/index.php &
+        run: php -d display_errors=1 -d log_errors=1 -d error_reporting=E_ALL -d error_log=/tmp/php_errors.log -S 127.0.0.1:9000 public/index.php &
 
       - name: Download static HTML with wget
         run: |
@@ -57,6 +57,17 @@ jobs:
                --directory-prefix=output --no-host-directories \
                --restrict-file-names=windows \
                http://127.0.0.1:9000/ || [[ $? == 8 ]]
+
+      - name: Show PHP error log
+        run: cat /tmp/php_errors.log || true
+
+      - name: Fail if output directory is missing or empty and debug HTTP response
+        run: |
+          if [ ! -d "output" ] || [ -z "$(ls -A output)" ]; then
+            curl -v http://127.0.0.1:9000/
+            echo "Error: output directory is missing or empty."
+            exit 1
+          fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
