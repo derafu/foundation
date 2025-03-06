@@ -10,7 +10,7 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\TestsHttp;
+namespace Derafu\TestsFoundation;
 
 use Derafu\Foundation\Installer;
 use PHPUnit\Framework\Attributes\CoversClass;

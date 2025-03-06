@@ -5,11 +5,12 @@
     logoHtml="<span class='fw-bold text-primary'>Derafu</span> <span class='fw-normal text-white'>ORG</span>"
     :leftNav="[
         {
-            text: 'Proyectos de Código Abierto',
+            text: 'Proyectos de Software Libre',
             icon: 'fa-brands fa-github',
             sections: [
                 {
-                    title: 'Base para Aplicación',
+                    cols: 4,
+                    title: 'Base para Aplicaciones',
                     links: [
                         {
                             text: 'Base de Sitios de Derafu',
@@ -37,6 +38,11 @@
                             icon: 'fa-solid fa-earth-americas'
                         },
                         {
+                            text: 'Bitácora de registros',
+                            url: 'https://derafu.org/log',
+                            icon: 'fa-solid fa-history'
+                        },
+                        {
                             text: 'Apoyo con Helpers',
                             url: 'https://derafu.org/support',
                             icon: 'fa-solid fa-life-ring'
@@ -44,6 +50,7 @@
                     ]
                 },
                 {
+                    cols: 4,
                     title: 'Manejo de Datos',
                     links: [
                         {
@@ -75,10 +82,16 @@
                             text: 'Selección y Filtrado en Arreglos',
                             url: 'https://derafu.org/selector',
                             icon: 'fa-solid fa-filter'
-                        }
+                        },
+                        {
+                            text: 'Codificación y validación de XML',
+                            url: 'https://derafu.org/xml',
+                            icon: 'fa-solid fa-code'
+                        },
                     ]
                 },
                 {
+                    cols: 4,
                     title: 'Vistas y Plantillas',
                     links: [
                         {
@@ -102,9 +115,14 @@
                             icon: 'fa-solid fa-keyboard'
                         },
                         {
+                            text: 'Vanilla JS',
+                            url: 'https://derafu.org/vanilla-js',
+                            icon: 'fa-brands fa-js'
+                        },
+                        {
                             text: 'Componentes HTML',
                             url: 'https://derafu.org/html',
-                            icon: 'fa-solid fa-code'
+                            icon: 'fa-brands fa-html5'
                         },
                         {
                             text: 'Gráficos con GD',
@@ -112,9 +130,62 @@
                             icon: 'fa-solid fa-chart-line'
                         },
                     ]
+                },
+                {
+                    cols: 4,
+                    title: 'Servicios para Aplicaciones',
+                    links: [
+                        {
+                            text: 'Envío de Correos',
+                            url: 'https://derafu.org/mail',
+                            icon: 'fa-solid fa-envelope'
+                        },
+                        {
+                            text: 'API con Autodescubrimiento',
+                            url: 'https://derafu.org/api',
+                            icon: 'fa-solid fa-server'
+                        }
+                    ]
+                },
+                {
+                    cols: 4,
+                    title: 'Seguridad y Autenticación',
+                    links: [
+                        {
+                            text: 'Certificados Digitales',
+                            url: 'https://derafu.org/certificate',
+                            icon: 'fa-solid fa-certificate'
+                        },
+                        {
+                            text: 'Firma Digital y XML-DSIG',
+                            url: 'https://derafu.org/signature',
+                            icon: 'fa-solid fa-signature'
+                        }
+                    ]
+                },
+                {
+                    cols: 4,
+                    title: 'L10n: Chile',
+                    links: [
+                        {
+                            text: 'Formateo y validación de RUN/RUT',
+                            url: 'https://github.com/derafu/l10n-cl-rut',
+                            icon: 'fa-solid fa-id-badge'
+                        },
+                        {
+                            text: 'Colección de enums',
+                            url: 'https://github.com/derafu/l10n-cl-enum',
+                            icon: 'fa-solid fa-list'
+                        }
+                    ]
                 }
             ],
             footer: [
+                {
+                    icon: 'fa-solid fa-box-open',
+                    text: 'Ver más Software Libre',
+                    url: '/free-software'
+                },
                 {
                     icon: 'fa-solid fa-book',
                     text: 'Documentación',
