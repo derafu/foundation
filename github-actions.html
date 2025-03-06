@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derafu: Foundation - Base for Derafu's Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+            
+            <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="container py-4">
+    <div class="markdown-body"><h1><a id="content-github-actions" href="github-actions.html#content-github-actions" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>GitHub Actions</h1>
+<p>Derafu Foundation includes pre-configured GitHub Actions workflows for continuous integration (CI) and continuous deployment (CD). This document explains how these workflows work and how to customize them.</p>
+<ul class="table-of-contents">
+<li><a href="github-actions.html#content-overview">Overview</a></li>
+<li><a href="github-actions.html#content-continuous-integration-ci">Continuous Integration (CI)</a>
+<ul>
+<li><a href="github-actions.html#content-what-it-does">What It Does</a></li>
+<li><a href="github-actions.html#content-customization">Customization</a></li>
+</ul>
+</li>
+<li><a href="github-actions.html#content-continuous-deployment-cd">Continuous Deployment (CD)</a>
+<ul>
+<li><a href="github-actions.html#content-what-it-does-1">What It Does</a></li>
+<li><a href="github-actions.html#content-github-pages-setup">GitHub Pages Setup</a></li>
+<li><a href="github-actions.html#content-customization-1">Customization</a></li>
+</ul>
+</li>
+<li><a href="github-actions.html#content-workflow-badges">Workflow Badges</a></li>
+<li><a href="github-actions.html#content-best-practices">Best Practices</a></li>
+<li><a href="github-actions.html#content-troubleshooting">Troubleshooting</a></li>
+</ul>
+<h2><a id="content-overview" href="github-actions.html#content-overview" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Overview</h2>
+<p>The <code>.github/workflows/</code> directory contains two main workflow files:</p>
+<ul>
+<li><code>ci.yml</code>: Continuous Integration workflow.</li>
+<li><code>cd.yml</code>: Continuous Deployment workflow.</li>
+</ul>
+<h2><a id="content-continuous-integration-ci" href="github-actions.html#content-continuous-integration-ci" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Continuous Integration (CI)</h2>
+<p>The CI workflow runs automatically on each push and pull request to validate code quality and ensure tests pass.</p>
+<h3><a id="content-what-it-does" href="github-actions.html#content-what-it-does" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>What It Does</h3>
+<p>The CI workflow:</p>
+<ol>
+<li>Sets up multiple PHP versions for testing.</li>
+<li>Installs dependencies using Composer.</li>
+<li>Validates Composer configuration.</li>
+<li>Runs PHP CS Fixer to check code style.</li>
+<li>Runs PHPStan for static analysis.</li>
+<li>Runs PHPUnit tests.</li>
+<li>Generates test coverage reports.</li>
+</ol>
+<h3><a id="content-customization" href="github-actions.html#content-customization" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Customization</h3>
+<p>To customize the CI workflow, edit the <code>.github/workflows/ci.yml</code> file. Common customizations include:</p>
+<ul>
+<li>Changing PHP versions to test against.</li>
+<li>Adding or removing validation steps.</li>
+<li>Modifying test coverage thresholds.</li>
+<li>Changing notification settings.</li>
+</ul>
+<p>Example of adding a new PHP version to test against:</p>
+<pre><code class="line-numbers match-braces language-yaml"># In .github/workflows/ci.yml
+jobs:
+  tests:
+    strategy:
+      matrix:
+        php-version: ['8.3', '8.4']  # Add or remove versions as needed.
+</code></pre>
+<h2><a id="content-continuous-deployment-cd" href="github-actions.html#content-continuous-deployment-cd" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Continuous Deployment (CD)</h2>
+<p>The CD workflow automatically builds and deploys your project documentation to GitHub Pages when changes are pushed to the main branch.</p>
+<p><strong>Note</strong>: Deployment is disabled by default, just remove the <code>false &amp;&amp;</code> in the file to enable it.</p>
+<h3><a id="content-what-it-does-1" href="github-actions.html#content-what-it-does-1" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>What It Does</h3>
+<p>The CD workflow:</p>
+<ol>
+<li>Checks out the repository.</li>
+<li>Sets up Node.js.</li>
+<li>Installs frontend dependencies.</li>
+<li>Builds assets using Vite.</li>
+<li>Sets up PHP.</li>
+<li>Installs Composer dependencies.</li>
+<li>Generates a static website from your project documentation.</li>
+<li>Deploys the static website to GitHub Pages.</li>
+</ol>
+<h3><a id="content-github-pages-setup" href="github-actions.html#content-github-pages-setup" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>GitHub Pages Setup</h3>
+<p>To use the CD workflow, you need to:</p>
+<ol>
+<li>Enable GitHub Pages in your repository settings.</li>
+<li>Set the source branch to <code>gh-pages</code> and the directory to <code>/</code> (root).</li>
+<li>Ensure the workflow has permission to write to the repository.</li>
+</ol>
+<h3><a id="content-customization-1" href="github-actions.html#content-customization-1" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Customization</h3>
+<p>To customize the CD workflow, edit the <code>.github/workflows/cd.yml</code> file. Common customizations include:</p>
+<ul>
+<li>Changing the deployment branch.</li>
+<li>Adding custom build steps.</li>
+<li>Configuring environment variables.</li>
+<li>Adding additional deployment targets.</li>
+</ul>
+<p>Example of changing the deployment branch:</p>
+<pre><code class="line-numbers match-braces language-yaml"># In .github/workflows/cd.yml
+- name: Deploy to GitHub Pages
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./public
+    publish_branch: documentation  # Change from gh-pages to another branch name.
+</code></pre>
+<h2><a id="content-workflow-badges" href="github-actions.html#content-workflow-badges" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Workflow Badges</h2>
+<p>You can add workflow status badges to your README.md to show the current status of your workflows:</p>
+<pre><code class="line-numbers match-braces language-markdown">![GitHub last commit](https://img.shields.io/github/last-commit/derafu/project/main)
+![CI Workflow](https://github.com/derafu/project/actions/workflows/ci.yml/badge.svg?branch=main&amp;event=push)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/derafu/project)
+![GitHub Issues](https://img.shields.io/github/issues-raw/derafu/project)
+![Total Downloads](https://poser.pugx.org/derafu/project/downloads)
+![Monthly Downloads](https://poser.pugx.org/derafu/project/d/monthly)
+</code></pre>
+<p>Replace <code>derafu/project</code> with your actual GitHub username and repository name.</p>
+<h2><a id="content-best-practices" href="github-actions.html#content-best-practices" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Best Practices</h2>
+<ol>
+<li><strong>Keep workflows fast</strong>: Optimize workflows to complete quickly.</li>
+<li><strong>Use caching</strong>: Cache dependencies to speed up builds.</li>
+<li><strong>Secure secrets</strong>: Use GitHub Secrets for sensitive information.</li>
+<li><strong>Test workflow changes</strong>: Test workflow changes on a feature branch before merging to main.</li>
+<li><strong>Monitor workflow runs</strong>: Regularly check workflow runs for issues.</li>
+</ol>
+<h2><a id="content-troubleshooting" href="github-actions.html#content-troubleshooting" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Troubleshooting</h2>
+<p>If a workflow fails:</p>
+<ol>
+<li>Check the workflow run logs in the GitHub Actions tab.</li>
+<li>Verify that all dependencies are correctly installed.</li>
+<li>Ensure environment variables are correctly set.</li>
+<li>Check if tests are failing locally as well.</li>
+<li>Look for GitHub Actions service status issues.</li>
+</ol>
+<p>If needed, you can run the workflow manually from the Actions tab by selecting the workflow and clicking “Run workflow”.</p>
+</div>
+</div>
+                </main>
+                <div class="col-md-3 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">
+                                    <a href="https://github.com/derafu/foundation" target="_blank" class="link-secondary text-decoration-none">
+                                        <i class="fa-brands fa-github"></i>
+                                        derafu/foundation
+                                    </a>
+                                </span>
+                                <div class="my-2">
+                                    <img src="https://img.shields.io/github/stars/derafu/foundation" alt="GitHub Repo stars">
+                                    <img src="https://img.shields.io/github/forks/derafu/foundation" alt="GitHub forks">
+                                </div>
+                            </div>
+                        </li>
+                        <a href="index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">Docs</div>
+                            <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="project-structure.html" class="list-group-item list-group-item-action ">
+                            Project Structure
+                        </a>
+                        <a href="assets.html" class="list-group-item list-group-item-action ">
+                            Assets
+                        </a>
+                        <a href="code-quality.html" class="list-group-item list-group-item-action ">
+                            Code Quality
+                        </a>
+                        <a href="github-actions.html" class="list-group-item list-group-item-action active">
+                            GitHub Actions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+                <script src="js/derafu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    </body>
+</html>

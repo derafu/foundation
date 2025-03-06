@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derafu: Foundation - Base for Derafu's Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+            
+            <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="container py-4">
+    <div class="markdown-body"><h1><a id="content-code-quality-tools" href="code-quality.html#content-code-quality-tools" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Code Quality Tools</h1>
+<p>Derafu Foundation comes with pre-configured code quality tools to ensure consistent code style and identify potential issues early in development. This document explains how to use these tools effectively.</p>
+<ul class="table-of-contents">
+<li><a href="code-quality.html#content-php-cs-fixer">PHP CS Fixer</a>
+<ul>
+<li><a href="code-quality.html#content-configuration">Configuration</a></li>
+<li><a href="code-quality.html#content-usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="code-quality.html#content-phpstan">PHPStan</a>
+<ul>
+<li><a href="code-quality.html#content-configuration-1">Configuration</a></li>
+<li><a href="code-quality.html#content-levels-explained">Levels Explained</a></li>
+<li><a href="code-quality.html#content-usage-1">Usage</a></li>
+</ul>
+</li>
+<li><a href="code-quality.html#content-phpunit">PHPUnit</a>
+<ul>
+<li><a href="code-quality.html#content-configuration-2">Configuration</a></li>
+<li><a href="code-quality.html#content-directory-structure">Directory Structure</a></li>
+<li><a href="code-quality.html#content-usage-2">Usage</a></li>
+</ul>
+</li>
+<li><a href="code-quality.html#content-integration-with-cicd">Integration with CI/CD</a></li>
+<li><a href="code-quality.html#content-best-practices">Best Practices</a></li>
+</ul>
+<h2><a id="content-php-cs-fixer" href="code-quality.html#content-php-cs-fixer" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>PHP CS Fixer</h2>
+<p>PHP CS Fixer is a tool that automatically fixes PHP coding standards issues in your code according to rules you define.</p>
+<h3><a id="content-configuration" href="code-quality.html#content-configuration" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Configuration</h3>
+<p>The configuration is defined in <code>php-cs-fixer.php</code> at the root of your project. Key features include:</p>
+<ul>
+<li>PSR-12 coding standards by default.</li>
+<li>Strict type declarations enabled.</li>
+<li>Automatic array syntax conversion to short syntax.</li>
+<li>Ordered imports.</li>
+<li>Modern PHP features optimization (e.g., arrow functions).</li>
+<li>PHPUnit strict assertions.</li>
+</ul>
+<h3><a id="content-usage" href="code-quality.html#content-usage" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Usage</h3>
+<p>Run PHP CS Fixer to check code style issues:</p>
+<pre><code class="line-numbers match-braces language-shell">vendor/bin/php-cs-fixer fix --dry-run --diff
+</code></pre>
+<p>Fix code style issues automatically:</p>
+<pre><code class="line-numbers match-braces language-shell">vendor/bin/php-cs-fixer fix
+</code></pre>
+<h2><a id="content-phpstan" href="code-quality.html#content-phpstan" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>PHPStan</h2>
+<p>PHPStan is a static analysis tool that finds bugs in your code without running it. It’s focused on finding errors in code logic.</p>
+<h3><a id="content-configuration-1" href="code-quality.html#content-configuration-1" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Configuration</h3>
+<p>The configuration is defined in <code>phpstan.neon</code> at the root of your project. By default, it:</p>
+<ul>
+<li>Sets analysis level to 5 (out of 9)</li>
+<li>Analyzes code in the <code>src</code> and <code>tests</code> directories</li>
+</ul>
+<h3><a id="content-levels-explained" href="code-quality.html#content-levels-explained" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Levels Explained</h3>
+<ul>
+<li>Level 1: Basic checks.</li>
+<li>Level 2: Possibly undefined variables.</li>
+<li>Level 3: Return types, phpdocs.</li>
+<li>Level 4: Type hints.</li>
+<li>Level 5: Basic dead code detection.</li>
+<li>Level 6: Detecting unreachable code.</li>
+<li>Level 7: Union types.</li>
+<li>Level 8: More precise analysis</li>
+<li>Level 9: Mixed type detection</li>
+</ul>
+<h3><a id="content-usage-1" href="code-quality.html#content-usage-1" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Usage</h3>
+<p>Run PHPStan analysis:</p>
+<pre><code class="line-numbers match-braces language-shell">vendor/bin/phpstan analyse
+</code></pre>
+<h2><a id="content-phpunit" href="code-quality.html#content-phpunit" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>PHPUnit</h2>
+<p>PHPUnit is the standard testing framework for PHP applications.</p>
+<h3><a id="content-configuration-2" href="code-quality.html#content-configuration-2" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Configuration</h3>
+<p>The configuration is defined in <code>phpunit.xml</code> at the root of your project. Key features include:</p>
+<ul>
+<li>Test coverage reporting enabled.</li>
+<li>Strict mode enabled (fails on warnings, notices, etc.).</li>
+<li>Test results output to <code>var/tests-coverage.txt</code> and <code>var/tests-coverage.xml</code>.</li>
+<li>Test documentation output to <code>var/tests-testdox.txt</code>.</li>
+</ul>
+<h3><a id="content-directory-structure" href="code-quality.html#content-directory-structure" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Directory Structure</h3>
+<ul>
+<li><code>tests/src/</code>: Unit tests for your source code.</li>
+<li><code>tests/fixtures/</code>: Test data and fixtures.</li>
+</ul>
+<h3><a id="content-usage-2" href="code-quality.html#content-usage-2" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Usage</h3>
+<p>Run the test suite:</p>
+<pre><code class="line-numbers match-braces language-shell">vendor/bin/phpunit
+</code></pre>
+<p>Generate test coverage reports:</p>
+<pre><code class="line-numbers match-braces language-shell">vendor/bin/phpunit --coverage-html var/coverage
+</code></pre>
+<h2><a id="content-integration-with-cicd" href="code-quality.html#content-integration-with-cicd" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Integration with CI/CD</h2>
+<p>These tools are integrated into the CI workflow (<code>.github/workflows/ci.yml</code>), which automatically runs on each push to the repository. This ensures that code quality standards are maintained throughout development.</p>
+<h2><a id="content-best-practices" href="code-quality.html#content-best-practices" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Best Practices</h2>
+<ol>
+<li><strong>Run tools locally before committing</strong>: This helps catch issues before they enter the codebase.</li>
+<li><strong>Gradually increase PHPStan level</strong>: Start with level 5 and work toward higher levels as your project matures.</li>
+<li><strong>Aim for high test coverage</strong>: Write tests for all critical code paths.</li>
+<li><strong>Update rules as needed</strong>: Customize tool configurations to match your project’s specific requirements (remember to deactivate the <code>Derafu\\Foundation\\Installer::copyFiles</code> from the <code>post-install-cmd</code> and <code>post-update-cmd</code> scripts in your <code>composer.json</code> file).</li>
+</ol>
+</div>
+</div>
+                </main>
+                <div class="col-md-3 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">
+                                    <a href="https://github.com/derafu/foundation" target="_blank" class="link-secondary text-decoration-none">
+                                        <i class="fa-brands fa-github"></i>
+                                        derafu/foundation
+                                    </a>
+                                </span>
+                                <div class="my-2">
+                                    <img src="https://img.shields.io/github/stars/derafu/foundation" alt="GitHub Repo stars">
+                                    <img src="https://img.shields.io/github/forks/derafu/foundation" alt="GitHub forks">
+                                </div>
+                            </div>
+                        </li>
+                        <a href="index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">Docs</div>
+                            <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="project-structure.html" class="list-group-item list-group-item-action ">
+                            Project Structure
+                        </a>
+                        <a href="assets.html" class="list-group-item list-group-item-action ">
+                            Assets
+                        </a>
+                        <a href="code-quality.html" class="list-group-item list-group-item-action active">
+                            Code Quality
+                        </a>
+                        <a href="github-actions.html" class="list-group-item list-group-item-action ">
+                            GitHub Actions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+                <script src="js/derafu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    </body>
+</html>

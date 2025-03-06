@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derafu: Foundation - Base for Derafu's Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+            
+            <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="container py-4">
+    <div class="markdown-body"><h1><a id="content-project-structure" href="project-structure.html#content-project-structure" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Project Structure</h1>
+<p>Derafu Foundation provides a standardized directory structure for your projects. This document explains the purpose of each directory and key files.</p>
+<ul class="table-of-contents">
+<li><a href="project-structure.html#content-root-directories">Root Directories</a>
+<ul>
+<li><a href="project-structure.html#content-github">.github/</a></li>
+<li><a href="project-structure.html#content-app">app/</a></li>
+<li><a href="project-structure.html#content-assets">assets/</a></li>
+<li><a href="project-structure.html#content-config">config/</a></li>
+<li><a href="project-structure.html#content-public">public/</a></li>
+<li><a href="project-structure.html#content-src">src/</a></li>
+<li><a href="project-structure.html#content-templates">templates/</a></li>
+<li><a href="project-structure.html#content-tests">tests/</a></li>
+<li><a href="project-structure.html#content-var">var/</a></li>
+</ul>
+</li>
+<li><a href="project-structure.html#content-key-files">Key Files</a>
+<ul>
+<li><a href="project-structure.html#content-configuration-files">Configuration Files</a></li>
+<li><a href="project-structure.html#content-application-files">Application Files</a></li>
+</ul>
+</li>
+<li><a href="project-structure.html#content-file-copying-mechanism">File Copying Mechanism</a></li>
+<li><a href="project-structure.html#content-extending-the-structure">Extending the Structure</a></li>
+</ul>
+<h2><a id="content-root-directories" href="project-structure.html#content-root-directories" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Root Directories</h2>
+<h3><a id="content-github" href="project-structure.html#content-github" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>.github/</code></h3>
+<p>Contains GitHub-specific configurations:</p>
+<ul>
+<li><code>workflows/ci.yml</code>: Continuous Integration workflow that runs tests and code quality checks.</li>
+<li><code>workflows/cd.yml</code>: Continuous Deployment workflow for automatically deploying. By default, it is configured to deploy to GitHub Pages. Deployment is disabled by default, just remove the <code>false &amp;&amp;</code> in the file to enable it.</li>
+</ul>
+<h3><a id="content-app" href="project-structure.html#content-app" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>app/</code></h3>
+<p>Application bootstrap files:</p>
+<ul>
+<li><code>bootstrap.php</code>: The main bootstrap file that initializes the application runtime.</li>
+</ul>
+<h3><a id="content-assets" href="project-structure.html#content-assets" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>assets/</code></h3>
+<p>Frontend assets organized by type:</p>
+<ul>
+<li><code>css/</code>: CSS stylesheets.</li>
+<li><code>js/</code>: JavaScript files.</li>
+<li><code>img/</code>: Images and other media files.</li>
+</ul>
+<h3><a id="content-config" href="project-structure.html#content-config" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>config/</code></h3>
+<p>Configuration files:</p>
+<ul>
+<li><code>routes.yaml</code>: Route definitions for your application.</li>
+<li><code>services.yaml</code>: Service container configuration (dependency injection).</li>
+</ul>
+<h3><a id="content-public" href="project-structure.html#content-public" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>public/</code></h3>
+<p>Web server document root:</p>
+<ul>
+<li><code>index.php</code>: Application entry point with Front Controller.</li>
+<li><code>static/</code>: Compiled assets (generated by the build process).</li>
+</ul>
+<p><strong>Note</strong>: If your application doesn’t need a Front Controller, by default, it’s used only for documentation.</p>
+<h3><a id="content-src" href="project-structure.html#content-src" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>src/</code></h3>
+<p>Application source code. Organize your PHP classes here according to their namespace. By convention, but not enforced out of Derafu ORG, use:</p>
+<ul>
+<li><code>Abstract/</code>: Abstract classes, with <code>Abstract</code> prefix.</li>
+<li><code>Contract/</code>: Interfaces for your application, with <code>Interface</code> suffix.</li>
+<li><code>Controller/</code>: Controller classes, with <code>Controller</code> suffix.</li>
+<li><code>Service/</code>: Service classes.</li>
+</ul>
+<h3><a id="content-templates" href="project-structure.html#content-templates" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>templates/</code></h3>
+<p>Template files for rendering HTML:</p>
+<ul>
+<li><code>components/</code>: Reusable template components (header, footer, etc.).</li>
+<li><code>layouts/</code>: Layout templates that define page structure.</li>
+<li><code>pages/</code>: Page-specific templates.</li>
+<li><code>base.html.twig</code>: Base template that defines the HTML structure for all layouts.</li>
+<li><code>error.html.twig</code>: Error page template.</li>
+<li><code>html.html.twig</code>: HTML wrapper template, used when rendering a markdown o php template.</li>
+</ul>
+<h3><a id="content-tests" href="project-structure.html#content-tests" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>tests/</code></h3>
+<p>Test files:</p>
+<ul>
+<li><code>fixtures/</code>: Test fixtures and sample data.</li>
+<li><code>src/</code>: Tests for your source code. You can organize your tests by tests suits, mirroring the structure of the <code>src/</code> directory, by features or any other criteria (but not enforced out of Derafu ORG).</li>
+</ul>
+<h3><a id="content-var" href="project-structure.html#content-var" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a><code>var/</code></h3>
+<p>Temporary files and caches:</p>
+<ul>
+<li><code>cache/</code>: Cache files.</li>
+<li><code>logs/</code>: Log files.</li>
+<li><code>tmp/</code>: Temporary files.</li>
+</ul>
+<h2><a id="content-key-files" href="project-structure.html#content-key-files" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Key Files</h2>
+<h3><a id="content-configuration-files" href="project-structure.html#content-configuration-files" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Configuration Files</h3>
+<ul>
+<li><code>.gitignore</code>: Specifies files that Git should ignore.</li>
+<li><code>LICENSE</code>: MIT license file by default.</li>
+<li><code>package.json</code>: NPM configuration for frontend assets.</li>
+<li><code>php-cs-fixer.php</code>: PHP CS Fixer configuration.</li>
+<li><code>phpstan.neon</code>: PHPStan configuration.</li>
+<li><code>phpunit.xml</code>: PHPUnit configuration.</li>
+<li><code>vite.config.js</code>: Vite build configuration.</li>
+</ul>
+<h3><a id="content-application-files" href="project-structure.html#content-application-files" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Application Files</h3>
+<ul>
+<li><code>public/index.php</code>: Main entry point that bootstraps the application.</li>
+<li><code>app/bootstrap.php</code>: Initializes the runtime environment.</li>
+</ul>
+<h2><a id="content-file-copying-mechanism" href="project-structure.html#content-file-copying-mechanism" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>File Copying Mechanism</h2>
+<p>The <code>Installer</code> class in <code>Installer.php</code> is responsible for copying foundation files to new projects during Composer installation. This class:</p>
+<ol>
+<li>Defines a list of files to copy in the <code>FILES</code> constant.</li>
+<li>Copies each file from the foundation package to the project directory.</li>
+<li>Creates necessary directories if they don’t exist.</li>
+<li>Handles file overwrite rules (some files are configured to be overwritten in updates, others not).</li>
+</ol>
+<p>Files marked with <code>true</code> in the <code>FILES</code> constant will be overwritten if they already exist:</p>
+<pre><code class="line-numbers match-braces language-php">private const FILES = [
+    // Files that will not be overwritten if they exist.
+    '.github/workflows/cd.yml',
+    '.github/workflows/ci.yml',
+    // Files that will be overwritten even if they exist.
+    'app/bootstrap.php' =&gt; true,
+    // ...
+];
+</code></pre>
+<p><strong>Note</strong>: The idea behind overwriting files is to make it easier to update the foundation. But, you can disable it by removing the <code>Derafu\\Foundation\\Installer::copyFiles</code> from the <code>post-install-cmd</code> and <code>post-update-cmd</code> scripts in your <code>composer.json</code> file.</p>
+<h2><a id="content-extending-the-structure" href="project-structure.html#content-extending-the-structure" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Extending the Structure</h2>
+<p>When creating a new project based on this foundation, you should:</p>
+<ol>
+<li>Keep the existing directory structure.</li>
+<li>Add your own directories as needed.</li>
+<li>Follow PSR-4 autoloading standards for your PHP classes.</li>
+<li>Place tests in the corresponding structure within the <code>tests/</code> directory.</li>
+</ol>
+<p>The structure is designed to be flexible while providing a consistent organization pattern across projects.</p>
+</div>
+</div>
+                </main>
+                <div class="col-md-3 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">
+                                    <a href="https://github.com/derafu/foundation" target="_blank" class="link-secondary text-decoration-none">
+                                        <i class="fa-brands fa-github"></i>
+                                        derafu/foundation
+                                    </a>
+                                </span>
+                                <div class="my-2">
+                                    <img src="https://img.shields.io/github/stars/derafu/foundation" alt="GitHub Repo stars">
+                                    <img src="https://img.shields.io/github/forks/derafu/foundation" alt="GitHub forks">
+                                </div>
+                            </div>
+                        </li>
+                        <a href="index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">Docs</div>
+                            <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="project-structure.html" class="list-group-item list-group-item-action active">
+                            Project Structure
+                        </a>
+                        <a href="assets.html" class="list-group-item list-group-item-action ">
+                            Assets
+                        </a>
+                        <a href="code-quality.html" class="list-group-item list-group-item-action ">
+                            Code Quality
+                        </a>
+                        <a href="github-actions.html" class="list-group-item list-group-item-action ">
+                            GitHub Actions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+                <script src="js/derafu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    </body>
+</html>

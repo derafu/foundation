@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derafu: Foundation - Base for Derafu's Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+            
+            <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="container py-4">
+    <div class="markdown-body"><h1><a id="content-frontend-asset-management" href="assets.html#content-frontend-asset-management" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Frontend Asset Management</h1>
+<p>Derafu Foundation includes a pre-configured asset build system using <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://vitejs.dev">Vite</a>. This document explains how to work with frontend assets in your project.</p>
+<ul class="table-of-contents">
+<li><a href="assets.html#content-overview">Overview</a></li>
+<li><a href="assets.html#content-directory-structure">Directory Structure</a></li>
+<li><a href="assets.html#content-configuration">Configuration</a>
+<ul>
+<li><a href="assets.html#content-entry-points">Entry Points</a></li>
+<li><a href="assets.html#content-image-optimization">Image Optimization</a></li>
+</ul>
+</li>
+<li><a href="assets.html#content-usage">Usage</a>
+<ul>
+<li><a href="assets.html#content-adding-assets">Adding Assets</a></li>
+<li><a href="assets.html#content-importing-assets">Importing Assets</a></li>
+<li><a href="assets.html#content-building-assets">Building Assets</a></li>
+<li><a href="assets.html#content-using-built-assets">Using Built Assets</a></li>
+</ul>
+</li>
+<li><a href="assets.html#content-best-practices">Best Practices</a></li>
+<li><a href="assets.html#content-advanced-configuration">Advanced Configuration</a></li>
+</ul>
+<h2><a id="content-overview" href="assets.html#content-overview" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Overview</h2>
+<p>The asset management system handles:</p>
+<ul>
+<li>CSS compilation.</li>
+<li>JavaScript bundling.</li>
+<li>Image optimization.</li>
+<li>Source maps generation.</li>
+<li>Asset versioning.</li>
+</ul>
+<h2><a id="content-directory-structure" href="assets.html#content-directory-structure" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Directory Structure</h2>
+<pre><code class="line-numbers match-braces">project_dir/
+├── assets/
+│   ├── css/
+│   │   └── app.css           # Main CSS file.
+│   ├── img/                  # Image files.
+│   └── js/
+│       ├── app.js            # Main JavaScript entry point.
+│       └── images.js         # Image import handling.
+├── public/
+│   └── static/               # Output directory (generated).
+│       ├── css/
+│       ├── img/
+│       └── js/
+└── vite.config.js            # Vite configuration.
+</code></pre>
+<h2><a id="content-configuration" href="assets.html#content-configuration" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Configuration</h2>
+<p>The Vite configuration is defined in <code>vite.config.js</code>. Key features include:</p>
+<ul>
+<li>Multiple entry points: <code>app.js</code>, <code>app.css</code>, and <code>images.js</code>.</li>
+<li>Output directory: <code>public/static/</code>.</li>
+<li>Custom file naming with <code>.min</code> suffix.</li>
+<li>Image optimization using <code>vite-plugin-sharp</code>.</li>
+</ul>
+<h3><a id="content-entry-points" href="assets.html#content-entry-points" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Entry Points</h3>
+<ul>
+<li><code>app.js</code>: Main JavaScript code.</li>
+<li><code>app.css</code>: Main CSS styles.</li>
+<li><code>images.js</code>: Used for processing and importing images.</li>
+</ul>
+<h3><a id="content-image-optimization" href="assets.html#content-image-optimization" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Image Optimization</h3>
+<p>Images are automatically optimized during the build process using the Sharp image processing library. The configuration includes:</p>
+<ul>
+<li>PNG compression: Quality 85%, maximum compression level.</li>
+<li>JPEG compression: Quality 85%, progressive encoding.</li>
+<li>Automatic resizing of large images to a maximum of 2000×2000 pixels.</li>
+</ul>
+<h2><a id="content-usage" href="assets.html#content-usage" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Usage</h2>
+<h3><a id="content-adding-assets" href="assets.html#content-adding-assets" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Adding Assets</h3>
+<ol>
+<li><strong>CSS</strong>: Add your CSS files to the <code>assets/css/</code> directory.</li>
+<li><strong>JavaScript</strong>: Add your JavaScript files to the <code>assets/js/</code> directory.</li>
+<li><strong>Images</strong>: Add your images to the <code>assets/img/</code> directory.</li>
+</ol>
+<h3><a id="content-importing-assets" href="assets.html#content-importing-assets" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Importing Assets</h3>
+<h4><a id="content-css" href="assets.html#content-css" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>CSS</h4>
+<p>In your main <code>app.css</code> file:</p>
+<pre><code class="line-numbers match-braces language-css">/* Import other CSS files */
+@import './components/buttons.css';
+</code></pre>
+<h4><a id="content-javascript" href="assets.html#content-javascript" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>JavaScript</h4>
+<p>In your JavaScript files:</p>
+<pre><code class="line-numbers match-braces language-javascript">// Import other JavaScript files.
+import './components/slider.js';
+
+// Import CSS from JavaScript.
+import '../css/components/modal.css';
+
+// Import images.
+import logo from '../img/logo.png';
+</code></pre>
+<h4><a id="content-images" href="assets.html#content-images" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Images</h4>
+<p>For processing multiple images at once, use the <code>images.js</code> file:</p>
+<pre><code class="line-numbers match-braces language-javascript">// Import all images in a directory.
+import.meta.glob('../img/**/*');
+</code></pre>
+<h3><a id="content-building-assets" href="assets.html#content-building-assets" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Building Assets</h3>
+<p>To build assets for production:</p>
+<pre><code class="line-numbers match-braces language-shell">npm run build
+</code></pre>
+<p>This will:</p>
+<ol>
+<li>Compile and bundle all assets.</li>
+<li>Optimize images.</li>
+<li>Generate minified files with source maps.</li>
+<li>Output everything to the <code>public/static/</code> directory.</li>
+</ol>
+<h3><a id="content-using-built-assets" href="assets.html#content-using-built-assets" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Using Built Assets</h3>
+<p>In your HTML/Twig templates, reference the built assets:</p>
+<pre><code class="line-numbers match-braces language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/app.min.css&quot;&gt;
+&lt;script src=&quot;/static/js/app.min.js&quot;&gt;&lt;/script&gt;
+&lt;img src=&quot;/static/img/logo.png&quot;&gt;
+</code></pre>
+<h2><a id="content-best-practices" href="assets.html#content-best-practices" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Best Practices</h2>
+<ol>
+<li><strong>Organize by component</strong>: Group related CSS, JS, and images by feature or component.</li>
+<li><strong>Optimize images before adding</strong>: While the build process optimizes images, starting with optimized images is better.</li>
+<li><strong>Use CSS imports</strong>: Keep CSS modular by using imports.</li>
+<li><strong>Lazy load images</strong>: For image-heavy pages, consider implementing lazy loading.</li>
+<li><strong>Watch file size</strong>: Monitor the size of your built assets to ensure optimal loading times.</li>
+</ol>
+<h2><a id="content-advanced-configuration" href="assets.html#content-advanced-configuration" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Advanced Configuration</h2>
+<p>The Vite configuration can be extended to support:</p>
+<ul>
+<li>CSS preprocessors (Sass, Less, etc.).</li>
+<li>TypeScript.</li>
+<li>Additional plugins for specific needs.</li>
+<li>Custom output paths and formats.</li>
+</ul>
+<p>To modify the configuration, edit the <code>vite.config.js</code> file as needed (remember to deactivate the <code>Derafu\\Foundation\\Installer::copyFiles</code> from the <code>post-install-cmd</code> and <code>post-update-cmd</code> scripts in your <code>composer.json</code> file).</p>
+</div>
+</div>
+                </main>
+                <div class="col-md-3 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">
+                                    <a href="https://github.com/derafu/foundation" target="_blank" class="link-secondary text-decoration-none">
+                                        <i class="fa-brands fa-github"></i>
+                                        derafu/foundation
+                                    </a>
+                                </span>
+                                <div class="my-2">
+                                    <img src="https://img.shields.io/github/stars/derafu/foundation" alt="GitHub Repo stars">
+                                    <img src="https://img.shields.io/github/forks/derafu/foundation" alt="GitHub forks">
+                                </div>
+                            </div>
+                        </li>
+                        <a href="index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">Docs</div>
+                            <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="project-structure.html" class="list-group-item list-group-item-action ">
+                            Project Structure
+                        </a>
+                        <a href="assets.html" class="list-group-item list-group-item-action active">
+                            Assets
+                        </a>
+                        <a href="code-quality.html" class="list-group-item list-group-item-action ">
+                            Code Quality
+                        </a>
+                        <a href="github-actions.html" class="list-group-item list-group-item-action ">
+                            GitHub Actions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+                <script src="js/derafu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    </body>
+</html>

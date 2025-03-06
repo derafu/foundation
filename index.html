@@ -16,31 +16,140 @@
 <body class="derafu-theme-earthstone">
                 <div id="header-container" class="sticky-top"></div>
             
-            <main>
-            <div class="container py-4">
+            <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="container py-4">
     <div class="markdown-body"><h1><a id="content-derafu-foundation---base-for-derafus-projects" href="index.html#content-derafu-foundation---base-for-derafus-projects" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Derafu: Foundation - Base for Derafu’s Projects</h1>
-<p><a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://github.com/derafu/foundation/actions/workflows/ci.yml?query=branch%3Amain"><img src="https://github.com/derafu/foundation/actions/workflows/ci.yml/badge.svg?branch=main&amp;event=push" alt="CI Workflow" /></a>
-<a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a></p>
+<p><img src="https://img.shields.io/github/last-commit/derafu/foundation/main" alt="GitHub last commit" />
+<img src="https://github.com/derafu/foundation/actions/workflows/ci.yml/badge.svg?branch=main&amp;event=push" alt="CI Workflow" />
+<img src="https://img.shields.io/github/languages/code-size/derafu/foundation" alt="GitHub code size in bytes" />
+<img src="https://img.shields.io/github/issues-raw/derafu/foundation" alt="GitHub Issues" />
+<img src="https://poser.pugx.org/derafu/foundation/downloads" alt="Total Downloads" />
+<img src="https://poser.pugx.org/derafu/foundation/d/monthly" alt="Monthly Downloads" /></p>
+<h2><a id="content-overview" href="index.html#content-overview" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Overview</h2>
+<p>Derafu Foundation is a standardized base for creating consistent PHP projects. It provides a pre-configured environment with best practices for code organization, documentation, testing, and code quality assurance. This foundation is designed to streamline the creation of new projects while ensuring they follow consistent patterns and standards.</p>
+<h2><a id="content-key-features" href="index.html#content-key-features" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Key Features</h2>
+<ul>
+<li><strong>Standardized Structure</strong>: Consistent file and directory organization across all projects.</li>
+<li><strong>Code Quality Tools</strong>: Pre-configured PHP CS Fixer, PHPStan, and PHPUnit setups.</li>
+<li><strong>Asset Management</strong>: Built-in Vite configuration for CSS, JavaScript, and image optimization.</li>
+<li><strong>Documentation</strong>: Automatic website generation from README.md with GitHub Pages deployment.</li>
+<li><strong>CI/CD Integration</strong>: GitHub Actions workflows for continuous integration and deployment.</li>
+<li><strong>Middleware-based HTTP Layer</strong>: Ready-to-use PSR-compliant HTTP handling.</li>
+<li><strong>Routing System</strong>: Flexible routing with support for static routes and filesystem-based routes.</li>
+<li><strong>Templating</strong>: Twig and Markdown rendering support.</li>
+</ul>
 <h2><a id="content-quick-start" href="index.html#content-quick-start" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Quick Start</h2>
-<p>You need to have <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://www.php.net/manual/en/install.php">PHP</a> and <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://getcomposer.org/download/">Composer</a> installed, then run:</p>
+<h3><a id="content-installation" href="index.html#content-installation" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Installation</h3>
+<p>Create a new project based on this foundation:</p>
 <pre><code class="line-numbers match-braces language-shell">composer create-project derafu/project project_dir --stability=dev
 </code></pre>
-<p>If you need to use assets (CSS, JavaScript or images) add them to the <code>assets</code> directory and then run:</p>
-<pre><code class="line-numbers match-braces language-shell">npm run build
+<h3><a id="content-asset-compilation" href="index.html#content-asset-compilation" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Asset Compilation</h3>
+<p>If your project uses CSS, JavaScript, or images, add them to the <code>assets</code> directory and compile them:</p>
+<pre><code class="line-numbers match-braces language-shell">npm install
+npm run build
 </code></pre>
-<p>To run the project, enter to the project directory and start the PHP server with:</p>
+<h3><a id="content-development-server" href="index.html#content-development-server" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Development Server</h3>
+<p>Start the built-in PHP development server:</p>
 <pre><code class="line-numbers match-braces language-shell">php -S localhost:9000 public/index.php
 </code></pre>
-<p>Then go to <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="http://localhost:9000">http://localhost:9000</a></p>
+<p>Then visit <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="http://localhost:9000">http://localhost:9000</a> to see your project.</p>
+<h2><a id="content-project-structure" href="index.html#content-project-structure" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Project Structure</h2>
+<pre><code class="line-numbers match-braces">project_dir/
+├── .github/             # GitHub configurations and workflows.
+├── app/                 # Application bootstrap files.
+├── assets/              # Frontend assets (CSS, JS, images).
+├── config/              # Configuration files.
+│   ├── routes.yaml      # Route definitions.
+│   └── services.yaml    # Service container configuration.
+├── public/              # Web server root directory.
+│   ├── index.php        # Application entry point.
+│   └── static/          # Compiled assets (generated).
+├── src/                 # Source code.
+├── templates/           # Template files.
+│   ├── components/      # Reusable template components.
+│   ├── layouts/         # Layout templates.
+│   └── pages/           # Page templates.
+├── tests/               # Test files.
+│   ├── fixtures/        # Test fixtures.
+│   └── src/             # Source code tests.
+├── vendor/              # Composer dependencies.
+├── var/                 # Temporary files and caches.
+├── .gitignore           # Git ignore configuration.
+├── LICENSE              # MIT License.
+├── package.json         # NPM configuration.
+├── php-cs-fixer.php     # PHP CS Fixer configuration.
+├── phpstan.neon         # PHPStan configuration.
+├── phpunit.xml          # PHPUnit configuration.
+├── README.md            # Project documentation.
+└── vite.config.js       # Vite build configuration.
+</code></pre>
+<h2><a id="content-customization" href="index.html#content-customization" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Customization</h2>
+<p>After creating a project based on this foundation, you can:</p>
+<ol>
+<li>Modify <code>README.md</code> with your project-specific details.</li>
+<li>Update <code>package.json</code> with your project information.</li>
+<li>Add your routes in <code>config/routes.yaml</code>.</li>
+<li>Customize services in <code>config/services.yaml</code>.</li>
+<li>Create controllers and other classes in the <code>src/</code> directory.</li>
+<li>Add templates to the <code>templates/</code> directory.</li>
+<li>Write tests in the <code>tests/</code> directory.</li>
+</ol>
 <h2><a id="content-contributing" href="index.html#content-contributing" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Contributing</h2>
 <p>Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.</p>
 <h2><a id="content-license" href="index.html#content-license" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>License</h2>
 <p>This package is open-sourced software licensed under the <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 <hr />
+<p>Made with ❤️ by <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://www.derafu.org">Derafu</a> | © 2025 Esteban De La Fuente Rubio</p>
 <p>Happy coding! ✨</p>
 </div>
 </div>
-        </main>
+                </main>
+                <div class="col-md-3 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">
+                                    <a href="https://github.com/derafu/foundation" target="_blank" class="link-secondary text-decoration-none">
+                                        <i class="fa-brands fa-github"></i>
+                                        derafu/foundation
+                                    </a>
+                                </span>
+                                <div class="my-2">
+                                    <img src="https://img.shields.io/github/stars/derafu/foundation" alt="GitHub Repo stars">
+                                    <img src="https://img.shields.io/github/forks/derafu/foundation" alt="GitHub forks">
+                                </div>
+                            </div>
+                        </li>
+                        <a href="index.html" class="list-group-item list-group-item-action active">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">Docs</div>
+                            <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="project-structure.html" class="list-group-item list-group-item-action ">
+                            Project Structure
+                        </a>
+                        <a href="assets.html" class="list-group-item list-group-item-action ">
+                            Assets
+                        </a>
+                        <a href="code-quality.html" class="list-group-item list-group-item-action ">
+                            Code Quality
+                        </a>
+                        <a href="github-actions.html" class="list-group-item list-group-item-action ">
+                            GitHub Actions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     
             <div id="footer-container"></div>
                 <script src="js/derafu.js"></script>

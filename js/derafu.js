@@ -18,91 +18,91 @@ function loadDerafuHeader(containerId) {
                                         <li class="nav-item dropdown mega-menu-wrapper">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                             <i class="fa-brands fa-github me-1"></i>
-                                        Proyectos de Software Libre
+                                        Free Software Projects
                 </a>
                 <div class="dropdown-menu mega-dropdown">
                     <div class="container">
-                        <div class="mega-dropdown-header">Proyectos de Software Libre</div>
+                        <div class="mega-dropdown-header">Free Software Projects</div>
                         <div class="row">
                                                             <div class="col-4 mb-4">
-                                    <h6 class="dropdown-header">Base para Aplicaciones</h6>
+                                    <h6 class="dropdown-header">Base for Applications</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/foundation">
                                                                                                     <i class="fa-solid fa-house me-1"></i>
-                                                                                                Base de Sitios de Derafu
+                                                                                                Derafu Foundation
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/http">
                                                                                                     <i class="fa-solid fa-sitemap me-1"></i>
-                                                                                                Flujo HTTP con Middlewares
+                                                                                                HTTP Flow with Middlewares
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/routing">
                                                                                                     <i class="fa-solid fa-arrows-split-up-and-left me-1"></i>
-                                                                                                Enrutamiento con Parsers
+                                                                                                Routing with Parsers
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/kernel">
                                                                                                     <i class="fa-solid fa-heart me-1"></i>
-                                                                                                Núcleo con MicroKernel
+                                                                                                Core with MicroKernel
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/translation">
                                                                                                     <i class="fa-solid fa-earth-americas me-1"></i>
-                                                                                                Traducción con I18n/ICU
+                                                                                                Translation with I18n/ICU
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/log">
                                                                                                     <i class="fa-solid fa-history me-1"></i>
-                                                                                                Bitácora de registros
+                                                                                                Logbook
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/support">
                                                                                                     <i class="fa-solid fa-life-ring me-1"></i>
-                                                                                                Apoyo con Helpers
+                                                                                                Support with Helpers
                                             </a>
                                                                                                             </div>
                                                             <div class="col-4 mb-4">
                                     <h6 class="dropdown-header">Manejo de Datos</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/query">
                                                                                                     <i class="fa-solid fa-database me-1"></i>
-                                                                                                Operadores y Generador de Consultas SQL
+                                                                                                SQL Query Operators
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/data-processor">
                                                                                                     <i class="fa-solid fa-list-check me-1"></i>
-                                                                                                Procesamiento de Datos
+                                                                                                Data Processing
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/repository">
                                                                                                     <i class="fa-solid fa-folder-tree me-1"></i>
-                                                                                                Repositorios mediante Archivos
+                                                                                                File Repositories
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/config">
                                                                                                     <i class="fa-solid fa-cogs me-1"></i>
-                                                                                                Configuración y Opciones
+                                                                                                Configuration and Options
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/container">
                                                                                                     <i class="fa-solid fa-box-archive me-1"></i>
-                                                                                                Contenedores de Datos
+                                                                                                Data Containers
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/selector">
                                                                                                     <i class="fa-solid fa-filter me-1"></i>
-                                                                                                Selección y Filtrado en Arreglos
+                                                                                                Array Selection and Filtering
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/xml">
                                                                                                     <i class="fa-solid fa-code me-1"></i>
-                                                                                                Codificación y validación de XML
+                                                                                                XML Encoding and Validation
                                             </a>
                                                                                                             </div>
                                                             <div class="col-4 mb-4">
                                     <h6 class="dropdown-header">Vistas y Plantillas</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/renderer">
                                                                                                     <i class="fa-solid fa-palette me-1"></i>
-                                                                                                Renderizador Unificado
+                                                                                                Unified Renderer
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/twig">
                                                                                                     <i class="fa-solid fa-file-code me-1"></i>
-                                                                                                Componentes UX para Twig
+                                                                                                UX Components for Twig
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/markdown">
                                                                                                     <i class="fa-solid fa-file-lines me-1"></i>
-                                                                                                Plantillas con Markdown
+                                                                                                Markdown Templates
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/form">
                                                                                                     <i class="fa-solid fa-keyboard me-1"></i>
-                                                                                                Formularios
+                                                                                                Forms
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/vanilla-js">
                                                                                                     <i class="fa-brands fa-js me-1"></i>
@@ -110,328 +110,63 @@ function loadDerafuHeader(containerId) {
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/html">
                                                                                                     <i class="fa-brands fa-html5 me-1"></i>
-                                                                                                Componentes HTML
+                                                                                                HTML Components
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/chart">
                                                                                                     <i class="fa-solid fa-chart-line me-1"></i>
-                                                                                                Gráficos con GD
+                                                                                                Graphics with GD
                                             </a>
                                                                                                             </div>
                                                             <div class="col-4 mb-4">
                                     <h6 class="dropdown-header">Servicios para Aplicaciones</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/mail">
                                                                                                     <i class="fa-solid fa-envelope me-1"></i>
-                                                                                                Envío de Correos
+                                                                                                Email Sending
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/api">
                                                                                                     <i class="fa-solid fa-server me-1"></i>
-                                                                                                API con Autodescubrimiento
+                                                                                                API with Discovery
                                             </a>
                                                                                                             </div>
                                                             <div class="col-4 mb-4">
-                                    <h6 class="dropdown-header">Seguridad y Autenticación</h6>
+                                    <h6 class="dropdown-header">Security and Authentication</h6>
                                                                                                                         <a class="dropdown-item" href="https://derafu.org/certificate">
                                                                                                     <i class="fa-solid fa-certificate me-1"></i>
-                                                                                                Certificados Digitales
+                                                                                                Digital Certificates
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://derafu.org/signature">
                                                                                                     <i class="fa-solid fa-signature me-1"></i>
-                                                                                                Firma Digital y XML-DSIG
+                                                                                                Digital Signature and XML-DSIG
                                             </a>
                                                                                                             </div>
                                                             <div class="col-4 mb-4">
                                     <h6 class="dropdown-header">L10n: Chile</h6>
                                                                                                                         <a class="dropdown-item" href="https://github.com/derafu/l10n-cl-rut">
                                                                                                     <i class="fa-solid fa-id-badge me-1"></i>
-                                                                                                Formateo y validación de RUN/RUT
+                                                                                                RUN/RUT Formatting and Validation
                                             </a>
                                                                                                                                                                 <a class="dropdown-item" href="https://github.com/derafu/l10n-cl-enum">
                                                                                                     <i class="fa-solid fa-list me-1"></i>
-                                                                                                Colección de enums
+                                                                                                Enum Collection
                                             </a>
                                                                                                             </div>
                                                     </div>
                                                     <div class="mega-dropdown-footer">
                                                                                                             <a href="/free-software" class="mega-dropdown-footer-item">
                                                                                             <i class="fa-solid fa-box-open me-1"></i>
-                                                                                        Ver más Software Libre
+                                                                                        More About Free Software
                                         </a>
                                                                                                                                                 <a href="/docs" class="mega-dropdown-footer-item">
                                                                                             <i class="fa-solid fa-book me-1"></i>
-                                                                                        Documentación
+                                                                                        Documentation
                                         </a>
                                                                                                                                                 <a href="https://github.com/derafu" class="mega-dropdown-footer-item">
                                                                                             <i class="fa-brands fa-github me-1"></i>
-                                                                                        Ver en Github
+                                                                                        See on Github
                                         </a>
                                                                                                 </div>
                                             </div>
                 </div>
-            </li>
-                                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                            <i class="fa-solid fa-book me-1"></i>
-                                        Documentación
-                </a>
-                <ul class="dropdown-menu ">
-                                                                        <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-house me-1"></i>
-                                                                        Base de Sitios de Derafu
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/foundation">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-sitemap me-1"></i>
-                                                                        Flujo HTTP con Middlewares
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/http">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-arrows-split-up-and-left me-1"></i>
-                                                                        Enrutamiento con Parsers
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/routing">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                                                                                <li><hr class="dropdown-divider"></li>
-                                                                                                                                                                <li>
-                                                <a class="dropdown-item" href="https://derafu.org/routing/guide_en.html">
-                                                                                                        Guía en Inglés
-                                                </a>
-                                            </li>
-                                                                                                                                                                <li>
-                                                <a class="dropdown-item" href="https://derafu.org/routing/guide_es.html">
-                                                                                                        Guía en Español
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-heart me-1"></i>
-                                                                        Núcleo con MicroKernel
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/kernel">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-earth-americas me-1"></i>
-                                                                        Traducción con I18n/ICU
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/translation">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-life-ring me-1"></i>
-                                                                        Apoyo con Helpers
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/support">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li><hr class="dropdown-divider"></li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-database me-1"></i>
-                                                                        Operadores y Generador de Consultas SQL
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/query">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-list-check me-1"></i>
-                                                                        Procesamiento de Datos
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/data-processor">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-folder-tree me-1"></i>
-                                                                        Repositorios mediante Archivos
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/repository">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-cogs me-1"></i>
-                                                                        Configuración y Opciones
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/config">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-box-archive me-1"></i>
-                                                                        Contenedores de Datos
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/container">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-filter me-1"></i>
-                                                                        Selección y Filtrado en Arreglos
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/selector">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li><hr class="dropdown-divider"></li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-palette me-1"></i>
-                                                                        Renderizador Unificado
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/renderer">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-file-code me-1"></i>
-                                                                        Plantillas con Twig
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/twig">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                                                                                <li>
-                                                <a class="dropdown-item" href="https://derafu.org/twig/demo/themes/predefined.html">
-                                                                                                        Temas Predefinidos
-                                                </a>
-                                            </li>
-                                                                                                                                                                <li>
-                                                <a class="dropdown-item" href="https://derafu.org/twig/components.html">
-                                                                                                        Componentes
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-file-lines me-1"></i>
-                                                                        Plantillas con Markdown
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/markdown">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-keyboard me-1"></i>
-                                                                        Formularios
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/form">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-code me-1"></i>
-                                                                        Componentes HTML
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/html">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                                                                <li class="dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                                                            <i class="fa-solid fa-chart-line me-1"></i>
-                                                                        Gráficos con GD
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                                                                                                        <li>
-                                                <a class="dropdown-item" href="https://derafu.org/chart">
-                                                                                                        README
-                                                </a>
-                                            </li>
-                                                                                                            </ul>
-                            </li>
-                                                            </ul>
             </li>
             
             </ul>
@@ -446,19 +181,19 @@ function loadDerafuHeader(containerId) {
                                 <li class="nav-item">
                 <a class="nav-link" href="https://derafu.org/#education">
                                             <i class="fa-solid fa-user-graduate me-1"></i>
-                                        Educación
+                                        Education
                 </a>
             </li>
                                 <li class="nav-item">
                 <a class="nav-link" href="https://derafu.org/#community">
                                             <i class="fa-solid fa-handshake-angle me-1"></i>
-                                        Comunidad
+                                        Community
                 </a>
             </li>
                                 <li class="nav-item">
                 <a class="nav-link" href="https://derafu.org/#team">
                                             <i class="fa-solid fa-people-group me-1"></i>
-                                        Equipo
+                                        Team
                 </a>
             </li>
             
@@ -466,7 +201,7 @@ function loadDerafuHeader(containerId) {
                                                     <li class="nav-item ms-2">
                         <a href="#contact" class="btn btn-primary">
                                                             <i class="fa-solid fa-circle-info me-1"></i>
-                                                        Contacto &amp; Colaboración
+                                                        Contact &amp; Collaboration
                         </a>
                     </li>
                             </ul>
@@ -483,30 +218,30 @@ function loadDerafuFooter(containerId) {
     <div class="container">
         <div class="row">
                                         <div class="col">
-                                            <h5 class="derafu-block-footer__title mb-4">Proyectos Destacados</h5>
+                                            <h5 class="derafu-block-footer__title mb-4">Featured Projects</h5>
                                                                                     <ul class="derafu-block-footer__links list-unstyled">
                                                             <li>
                                     <a href="https://derafu.org/twig" >
                                                                                     <i class="fa-solid fa-file-code me-2"></i>
-                                                                                Componentes UX para Twig
+                                                                                UX Components for Twig
                                     </a>
                                 </li>
                                                             <li>
                                     <a href="https://derafu.org/query" >
                                                                                     <i class="fa-solid fa-database me-2"></i>
-                                                                                Operadores y Generador de Consultas SQL
+                                                                                SQL Query Operators
                                     </a>
                                 </li>
                                                             <li>
                                     <a href="https://derafu.org/data-processor" >
                                                                                     <i class="fa-solid fa-list-check me-2"></i>
-                                                                                Procesamiento de Datos
+                                                                                Data Processing
                                     </a>
                                 </li>
                                                             <li>
                                     <a href="https://derafu.org/selector" >
                                                                                     <i class="fa-solid fa-filter me-2"></i>
-                                                                                Selección y Filtrado en Arreglos
+                                                                                Array Selection and Filtering
                                     </a>
                                 </li>
                                                     </ul>
@@ -514,8 +249,8 @@ function loadDerafuFooter(containerId) {
             
                         
                                         <div class="col">
-                                                                <h5 class="derafu-block-footer__title mb-4">Contacto &amp; Colaboración</h5>
-                                                                <div class="derafu-block-footer__text mb-4">Si estás interesado en contribuir o colaborar, contáctanos.</div>
+                                                                <h5 class="derafu-block-footer__title mb-4">Contact &amp; Collaboration</h5>
+                                                                <div class="derafu-block-footer__text mb-4">If you are interested in contributing, collaborating, services or anything else, contact us.</div>
                                                                 <ul class="derafu-block-footer__links list-unstyled">
                                                             <li>
                                     <a href="" >
@@ -534,7 +269,7 @@ function loadDerafuFooter(containerId) {
             
                                         <div class="col">
                                                                 <h5 class="derafu-block-footer__title mb-4">Derafu ORG</h5>
-                                                                <div class="derafu-block-footer__text mb-4"><p>Santa Cruz, Valle de Colchagua, Chile.</p><p>Desde Chile para todo el mundo con <i class='fa-solid fa-heart text-danger'></i></p></div>
+                                                                <div class="derafu-block-footer__text mb-4"><p>Santa Cruz, Colchagua Valley, Chile.</p><p>From Chile for the world with <i class='fa-solid fa-heart text-danger'></i></p></div>
                                                                                     <div class="derafu-block-footer__social mt-4">
                                                             <a href="https://github.com/derafu"
                                                                       class="derafu-block-footer__social-icon "
@@ -553,7 +288,7 @@ function loadDerafuFooter(containerId) {
                                                     <div class="derafu-block-footer__bottom-text">Copyright &copy; 2025 Derafu ORG</div>
                                             </div>
                     <div class="col-md text-md-end">
-                                                    <div class="derafu-block-footer__bottom-text">Todos los derechos reservados.</div>
+                                                    <div class="derafu-block-footer__bottom-text">Derafu ORG is part of Derafu CORP</div>
                                             </div>
                 </div>
             </div>
