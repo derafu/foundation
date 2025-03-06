@@ -106,6 +106,4 @@ This package is open-sourced software licensed under the [MIT license](https://o
 
 ---
 
-Made with ❤️ by [Derafu](https://www.derafu.org) | © 2025 Esteban De La Fuente Rubio
-
 Happy coding! ✨
