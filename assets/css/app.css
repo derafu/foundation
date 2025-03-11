@@ -1,16 +1,1 @@
-/* Import base CSS from derafu/twig package */
-@import '../../vendor/derafu/twig/assets/css/derafu-twig.css';
-@import 'code.css';
-
-section {
-    scroll-margin-top: 5rem;
-}
-
-h1 {
-    margin: 24px 0 16px;
-    font-weight: 600;
-    padding-bottom: 0.3em;
-    font-size: 2em;
-    line-height: 1.25;
-    border-bottom: 1px solid #d7dde3;
-}
+/* Base CSS */
