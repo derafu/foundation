@@ -17,7 +17,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Installer::class)]
-class DummyTest extends TestCase
+final class DummyTest extends TestCase
 {
     public function testDummyAssertTrue(): void
     {
