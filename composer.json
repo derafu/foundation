@@ -26,9 +26,12 @@
     },
     "require": {
         "php": "^8.3",
+        "composer/composer": "^2.8",
         "derafu/http": "dev-main",
         "derafu/markdown": "^1.0",
-        "composer/composer": "^2.8"
+        "derafu/support": "dev-main",
+        "mpdf/mpdf": "^8.2",
+        "symfony/yaml": "^7.2"
     },
     "require-dev": {
         "ext-xdebug": "*",
