@@ -2,12 +2,12 @@
     "name": "derafu/foundation",
     "description": "Derafu: Foundation - Base for Derafu's Projects",
     "type": "library",
-    "homepage": "https://derafu.org/foundation",
+    "homepage": "https://www.derafu.dev/docs/core/foundation",
     "license": "MIT",
     "authors": [
         {
             "name": "Esteban De La Fuente Rubio / Derafu",
-            "homepage": "https://www.derafu.org"
+            "homepage": "https://www.derafu.dev"
         }
     ],
     "support": {
