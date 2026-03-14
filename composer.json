@@ -31,7 +31,7 @@
         "derafu/markdown": "^1.3",
         "derafu/support": "dev-main",
         "mpdf/mpdf": "^8.2",
-        "symfony/yaml": "^7.4"
+        "symfony/yaml": "^8.0"
     },
     "require-dev": {
         "ext-xdebug": "*",
