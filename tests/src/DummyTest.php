@@ -21,6 +21,8 @@ final class DummyTest extends TestCase
 {
     public function testDummyAssertTrue(): void
     {
+        // Placeholder so the suite is not empty.
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertTrue(true);
     }
 }
