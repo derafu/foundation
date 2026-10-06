@@ -1,7 +1,7 @@
 {
     "name": "derafu/foundation",
     "description": "Derafu: Foundation - Base of dependencies for Derafu's web applications",
-    "type": "metapackage",
+    "type": "library",
     "homepage": "https://www.derafu.dev/docs/core/foundation",
     "license": "MIT",
     "authors": [
