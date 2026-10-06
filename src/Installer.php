@@ -16,6 +16,9 @@ use Composer\Script\Event;
 
 /**
  * Installer class to handle file copying during installation.
+ *
+ * The lines that it writes to the console of Composer are in English and are not
+ * translated: it is the output of a tool for whoever installs the project.
  */
 final class Installer
 {
