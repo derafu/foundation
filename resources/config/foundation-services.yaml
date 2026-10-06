@@ -1,0 +1,107 @@
+# Base wiring of a Derafu web application.
+#
+# Import it from the services.yaml of the site:
+#
+#   imports:
+#       - { resource: '../vendor/derafu/foundation/resources/config/foundation-services.yaml' }
+#
+# It imports the services of the packages that derafu/foundation requires and
+# defines what every site repeats: the request handler with its middlewares, the
+# router, the renderer, the Twig extensions and the translator. A site that
+# needs something different declares the same service id in its own
+# services.yaml, after the import, and its definition replaces the one of this
+# file (the whole definition: its arguments are not merged).
+#
+# The language of the site is the parameter app.locale: the one of the
+# environment variable APP_LOCALE, or English. The site can also set
+# app.locale.default.
+
+imports:
+    - { resource: '../../../content/resources/config/content-services.yaml' }
+    - { resource: '../../../contact-form/resources/config/contact-form-services.yaml' }
+    - { resource: '../../../data-processor/resources/config/data-processor-services.yaml' }
+    - { resource: '../../../form/resources/config/form-services.yaml' }
+    - { resource: '../../../http/resources/config/http-services.yaml' }
+    - { resource: '../../../kernel/resources/config/kernel-services.yaml' }
+    - { resource: '../../../markdown/resources/config/markdown-services.yaml' }
+    - { resource: '../../../renderer/resources/config/renderer-services.yaml' }
+    - { resource: '../../../routing/resources/config/routing-services.yaml' }
+    - { resource: '../../../support/resources/config/support-services.yaml' }
+    - { resource: '../../../translation/resources/config/translation-services.yaml' }
+    - { resource: '../../../twig/resources/config/twig-services.yaml' }
+
+parameters:
+    app.locale.default: 'en'
+    app.locale: '%env(default:app.locale.default:APP_LOCALE)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Psr\Http\Server\RequestHandlerInterface:
+        class: Derafu\Http\Service\RequestHandler
+        public: true
+        arguments:
+            $middlewares:
+                - '@Derafu\Http\Middleware\StaticFilesMiddleware'
+                - '@Derafu\Http\Middleware\RequestFactoryMiddleware'
+                - '@Derafu\Http\Middleware\RouterMiddleware'
+                - '@Derafu\Http\Middleware\DispatcherMiddleware'
+                - '@Derafu\Http\Middleware\ResponseNormalizerMiddleware'
+
+    Derafu\Http\Middleware\StaticFilesMiddleware:
+        arguments:
+            $directory: '%kernel.project_dir%/public/static'
+
+    Derafu\Routing\Contract\RouterInterface:
+        class: Derafu\Routing\Router
+        arguments:
+            $parsers:
+                - '@Derafu\Routing\Parser\StaticParser'
+                - '@Derafu\Routing\Parser\DynamicParser'
+                - '@Derafu\Routing\Parser\FileSystemParser'
+            $routes: '%routes%'
+
+    Derafu\Routing\Parser\StaticParser: ~
+
+    Derafu\Routing\Parser\DynamicParser: ~
+
+    Derafu\Routing\Parser\FileSystemParser:
+        arguments:
+            $directories:
+                - '%kernel.project_dir%/templates/pages'
+            $extensions: ['.html.twig', '.md']
+
+    Derafu\Renderer\Contract\RendererInterface:
+        factory: ['Derafu\Renderer\Factory\RendererFactory', 'create']
+        lazy: true
+        arguments:
+            $options:
+                engines: ['twig', 'markdown', 'pdf']
+                extensions:
+                    - '@Derafu\Twig\Extension\RoutingExtension'
+                    - '@Derafu\Twig\Extension\TwigExtension'
+                    - '@Derafu\Twig\Extension\TranslationExtension'
+                    - '@Derafu\Form\Renderer\FormTwigExtension'
+                paths:
+                    - '%kernel.project_dir%/templates'
+                    - '%kernel.project_dir%/vendor/derafu/twig/resources/templates'
+                    - '%kernel.project_dir%/vendor/derafu/content/resources/templates'
+                    - '%kernel.project_dir%/vendor/derafu/contact-form/resources/templates'
+
+    Derafu\Twig\Extension\RoutingExtension:
+        arguments:
+            $router: '@Derafu\Routing\Contract\RouterInterface'
+
+    Derafu\Twig\Extension\TwigExtension: ~
+
+    Derafu\Twig\Extension\TranslationExtension: ~
+
+    Symfony\Component\Translation\Translator:
+        factory: ['Derafu\Translation\TranslatorFactory', 'create']
+        arguments:
+            $defaultLocale: '%app.locale%'
+            $fallbackLocales: ['en']
+            $resourceProviders: !tagged_iterator derafu_translation.resource_provider

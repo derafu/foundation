@@ -2,14 +2,6 @@
 var/
 vendor/
 composer.lock
-assets/img/*.svg
-
-# Node.js and Vite build.
-node_modules/
-public/static/
-npm-debug.log*
-package-lock.json
-.sharp-cache.json
 
 # IDE and editor specific files.
 .vscode/
