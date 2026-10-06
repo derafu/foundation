@@ -34,6 +34,10 @@ parameters:
     app.locale.default: 'en'
     app.locale: '%env(default:app.locale.default:APP_LOCALE)%'
 
+    # Default of the environment variable that a site uses in its
+    # derafu.content.config (cache.enabled: '%env(bool:CONTENT_CACHE_ENABLED)%').
+    env(CONTENT_CACHE_ENABLED): 'true'
+
 services:
     _defaults:
         autowire: true
@@ -98,6 +102,20 @@ services:
     Derafu\Twig\Extension\TwigExtension: ~
 
     Derafu\Twig\Extension\TranslationExtension: ~
+
+    # HTTP client (PSR-18) and PSR-17 factories, used by the packages that make
+    # requests (for example derafu/contact-form).
+    Psr\Http\Client\ClientInterface:
+        class: GuzzleHttp\Client
+        arguments:
+            $config:
+                timeout: 10
+
+    GuzzleHttp\Psr7\HttpFactory: ~
+
+    Psr\Http\Message\RequestFactoryInterface: '@GuzzleHttp\Psr7\HttpFactory'
+
+    Psr\Http\Message\StreamFactoryInterface: '@GuzzleHttp\Psr7\HttpFactory'
 
     Symfony\Component\Translation\Translator:
         factory: ['Derafu\Translation\TranslatorFactory', 'create']
