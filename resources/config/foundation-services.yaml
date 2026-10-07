@@ -6,8 +6,9 @@
 #       - { resource: '../vendor/derafu/foundation/resources/config/foundation-services.yaml' }
 #
 # It imports the services of the packages that derafu/foundation requires and
-# defines what every site repeats: the request handler with its middlewares, the
-# router, the renderer, the Twig extensions and the translator. A site that
+# defines what every site repeats: the request handler with its middlewares (the
+# session and its CSRF tokens, which the forms need), the router, the renderer,
+# the Twig extensions and the translator. A site that
 # needs something different declares the same service id in its own
 # services.yaml, after the import, and its definition replaces the one of this
 # file (the whole definition: its arguments are not merged).
@@ -19,6 +20,7 @@
 imports:
     - { resource: '../../../content/resources/config/content-services.yaml' }
     - { resource: '../../../contact-form/resources/config/contact-form-services.yaml' }
+    - { resource: '../../../csrf/resources/config/csrf-services.yaml' }
     - { resource: '../../../data-processor/resources/config/data-processor-services.yaml' }
     - { resource: '../../../form/resources/config/form-services.yaml' }
     - { resource: '../../../http/resources/config/http-services.yaml' }
@@ -26,6 +28,7 @@ imports:
     - { resource: '../../../markdown/resources/config/markdown-services.yaml' }
     - { resource: '../../../renderer/resources/config/renderer-services.yaml' }
     - { resource: '../../../routing/resources/config/routing-services.yaml' }
+    - { resource: '../../../session/resources/config/session-services.yaml' }
     - { resource: '../../../support/resources/config/support-services.yaml' }
     - { resource: '../../../translation/resources/config/translation-services.yaml' }
     - { resource: '../../../twig/resources/config/twig-services.yaml' }
@@ -52,6 +55,9 @@ services:
                 - '@Derafu\Http\Middleware\StaticFilesMiddleware'
                 - '@Derafu\Http\Middleware\RequestFactoryMiddleware'
                 - '@Derafu\Http\Middleware\RouterMiddleware'
+                - '@Mezzio\Session\SessionMiddleware'
+                - '@Mezzio\Flash\FlashMessageMiddleware'
+                - '@Derafu\Csrf\CsrfSessionMiddleware'
                 - '@Derafu\Http\Middleware\DispatcherMiddleware'
                 - '@Derafu\Http\Middleware\ResponseNormalizerMiddleware'
 
@@ -116,6 +122,16 @@ services:
     Psr\Http\Message\RequestFactoryInterface: '@GuzzleHttp\Psr7\HttpFactory'
 
     Psr\Http\Message\StreamFactoryInterface: '@GuzzleHttp\Psr7\HttpFactory'
+
+    # Cache pool (PSR-6) of the application, in the cache directory of the kernel.
+    # The packages that cache what they read (the keys of Keycloak in derafu/auth,
+    # the counts of the failed logins) use it. A site that needs another pool
+    # declares the same id.
+    Psr\Cache\CacheItemPoolInterface:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        arguments:
+            $namespace: 'derafu'
+            $directory: '%kernel.cache_dir%'
 
     Symfony\Component\Translation\Translator:
         factory: ['Derafu\Translation\TranslatorFactory', 'create']
