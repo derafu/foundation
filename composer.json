@@ -14,6 +14,11 @@
         "issues": "https://github.com/derafu/foundation/issues",
         "source": "https://github.com/derafu/foundation"
     },
+    "autoload": {
+        "psr-4": {
+            "Derafu\\Foundation\\": "src/"
+        }
+    },
     "require": {
         "php": "^8.5",
         "derafu/captcha": "dev-main",
@@ -35,6 +40,19 @@
         "mpdf/mpdf": "^8.3",
         "symfony/cache": "^8.1",
         "symfony/yaml": "^8.1"
+    },
+    "suggest": {
+        "phpunit/phpunit": "To test a site with Derafu\\Foundation\\Testing\\SiteTestCase."
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^13.4"
+    },
+    "scripts": {
+        "phpcs-fix": "vendor/bin/php-cs-fixer fix -v --config=php-cs-fixer.php",
+        "phpcs": "vendor/bin/php-cs-fixer fix -v --dry-run --diff --config=php-cs-fixer.php",
+        "phpstan": "vendor/bin/phpstan analyse --configuration=phpstan.neon --memory-limit=1G"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
