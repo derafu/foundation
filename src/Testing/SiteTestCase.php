@@ -54,18 +54,33 @@ abstract class SiteTestCase extends TestCase
 
     private string|false $locale;
 
+    /**
+     * @var array<string, mixed>
+     */
+    private array $env;
+
+    /**
+     * @var array<string, mixed>
+     */
+    private array $server;
+
     protected function setUp(): void
     {
         $this->locale = getenv('APP_LOCALE');
+        $this->env = $_ENV;
+        $this->server = $_SERVER;
     }
 
     protected function tearDown(): void
     {
-        // The session of the requests is not part of the state of the tests.
+        // The session of the requests, and the variables that the kernel reads
+        // from the `.env` of the site, are not part of the state of the tests.
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_write_close();
         }
         unset($_SESSION);
+        $_ENV = $this->env;
+        $_SERVER = $this->server;
 
         putenv($this->locale === false ? 'APP_LOCALE' : 'APP_LOCALE=' . $this->locale);
     }
