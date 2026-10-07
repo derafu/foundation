@@ -14,6 +14,8 @@ namespace Derafu\Foundation\Testing;
 
 use Composer\InstalledVersions;
 use Derafu\Kernel\Environment;
+use Derafu\Renderer\Engine\Html\TwigHtmlEngine;
+use Derafu\Twig\Lint\RouteReferenceScanner;
 use Nyholm\Psr7\ServerRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -30,6 +32,7 @@ use PHPUnit\Framework\TestCase;
  *   - A page that does not exist answers with a 404.
  *   - No route of the site that can be asked without parameters answers with an
  *     error of the server (5xx), except the ones of `excludedPaths()`.
+ *   - The templates of the site only refer to routes that the site defines.
  *
  * The tests that are only about the site (its texts, its languages) are added
  * to the class of the site, that can use `get()` to ask for a page:
@@ -55,34 +58,44 @@ abstract class SiteTestCase extends TestCase
     private string|false $locale;
 
     /**
-     * @var array<string, mixed>
+     * Builds the kernel of the site before the first test.
+     *
+     * The kernel reads the `.env` of the site when it boots, and writes its
+     * variables to `$_ENV` and `$_SERVER`. If that happened inside a test,
+     * PHPUnit would see a change of the global state in it and the test would
+     * be risky; and restoring the variables afterwards would take them away
+     * from the kernel, that reads some of them later (the arguments of the
+     * services that are created when a page needs them). Built here, before
+     * PHPUnit takes its photo of the state, they are part of it for all the
+     * tests, and the kernel keeps seeing them.
+     *
+     * A class that overrides this method has to call the parent.
      */
-    private array $env;
+    public static function setUpBeforeClass(): void
+    {
+        $locale = getenv('APP_LOCALE');
 
-    /**
-     * @var array<string, mixed>
-     */
-    private array $server;
+        self::useLocale(null);
+        self::$kernels[''] ??= self::createKernel();
+        self::$kernels['']->boot();
+
+        self::useLocale($locale);
+    }
 
     protected function setUp(): void
     {
         $this->locale = getenv('APP_LOCALE');
-        $this->env = $_ENV;
-        $this->server = $_SERVER;
     }
 
     protected function tearDown(): void
     {
-        // The session of the requests, and the variables that the kernel reads
-        // from the `.env` of the site, are not part of the state of the tests.
+        // The session of the requests is not part of the state of the tests.
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_write_close();
         }
         unset($_SESSION);
-        $_ENV = $this->env;
-        $_SERVER = $this->server;
 
-        putenv($this->locale === false ? 'APP_LOCALE' : 'APP_LOCALE=' . $this->locale);
+        self::useLocale($this->locale);
     }
 
     /**
@@ -166,6 +179,32 @@ abstract class SiteTestCase extends TestCase
         }
     }
 
+    #[Test]
+    public function everyRouteNameUsedInTheTemplatesIsDefined(): void
+    {
+        $kernel = $this->kernel(null);
+
+        $engine = $kernel->renderer()->getEngine('twig');
+        $this->assertInstanceOf(TwigHtmlEngine::class, $engine);
+
+        $references = (new RouteReferenceScanner($engine->getTwig()))
+            ->scanDirectory(self::projectDir() . '/templates')
+        ;
+
+        $missing = [];
+        $dynamic = [];
+        foreach ($references as $reference) {
+            if ($reference->isDynamic()) {
+                $dynamic[] = sprintf('%s:%d %s()', $reference->template, $reference->line, $reference->function);
+            } elseif (!$kernel->router()->has((string) $reference->name)) {
+                $missing[] = sprintf('%s:%d %s(\'%s\')', $reference->template, $reference->line, $reference->function, $reference->name);
+            }
+        }
+
+        $this->assertSame([], $missing, "Routes that do not exist:\n" . implode("\n", $missing));
+        $this->assertSame([], $dynamic, "Names that can not be checked by reading:\n" . implode("\n", $dynamic));
+    }
+
     /**
      * The paths of the routes that a GET can ask, without parameters.
      *
@@ -190,21 +229,35 @@ abstract class SiteTestCase extends TestCase
      */
     private function kernel(?string $locale): SiteKernel
     {
-        putenv($locale === null ? 'APP_LOCALE' : 'APP_LOCALE=' . $locale);
+        // The language is read from the environment when the kernel needs it,
+        // not only when it is built, so it is set on every call.
+        self::useLocale($locale);
 
-        return self::$kernels[(string) $locale] ??= $this->createKernel();
+        return self::$kernels[(string) $locale] ??= self::createKernel();
     }
 
-    private function createKernel(): SiteKernel
+    /**
+     * Sets the language of the site (`APP_LOCALE`) in the environment, or
+     * removes it when there is none (`null` or `false`).
+     */
+    private static function useLocale(string|false|null $locale): void
     {
-        $root = InstalledVersions::getRootPackage()['install_path'];
+        putenv($locale === null || $locale === false ? 'APP_LOCALE' : 'APP_LOCALE=' . $locale);
+    }
 
+    private static function projectDir(): string
+    {
+        return (string) realpath(InstalledVersions::getRootPackage()['install_path']);
+    }
+
+    private static function createKernel(): SiteKernel
+    {
         // Debug mode, so the container is built again with the configuration
         // of the moment and not taken from a cache that an earlier run left.
         return new SiteKernel(new Environment('test', true, [
             'APP_ENV' => 'test',
             'APP_DEBUG' => true,
-            'PROJECT_DIR' => realpath($root),
+            'PROJECT_DIR' => self::projectDir(),
             'URL_HOST' => 'localhost',
         ]));
     }
