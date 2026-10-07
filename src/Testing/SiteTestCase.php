@@ -29,7 +29,7 @@ use PHPUnit\Framework\TestCase;
  *   - The pages of `paths()` answer with a 200.
  *   - A page that does not exist answers with a 404.
  *   - No route of the site that can be asked without parameters answers with an
- *     error of the server (5xx).
+ *     error of the server (5xx), except the ones of `excludedPaths()`.
  *
  * The tests that are only about the site (its texts, its languages) are added
  * to the class of the site, that can use `get()` to ask for a page:
@@ -96,6 +96,20 @@ abstract class SiteTestCase extends TestCase
     protected function paths(): array
     {
         return ['/', '/contact', '/contact/success'];
+    }
+
+    /**
+     * The paths that the test of the routes does not ask for.
+     *
+     * A route that needs a service that is not there when testing (a game
+     * server, a payment gateway) can not answer; the site lists it here, and
+     * says why in a comment, instead of having a test that always fails.
+     *
+     * @return list<string>
+     */
+    protected function excludedPaths(): array
+    {
+        return [];
     }
 
     /**
@@ -168,7 +182,7 @@ abstract class SiteTestCase extends TestCase
             $paths[] = '/' . ltrim($route['path'], '/');
         }
 
-        return array_values(array_unique($paths));
+        return array_values(array_diff(array_unique($paths), $this->excludedPaths()));
     }
 
     /**
