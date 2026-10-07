@@ -13,12 +13,19 @@
 # services.yaml, after the import, and its definition replaces the one of this
 # file (the whole definition: its arguments are not merged).
 #
+# The captcha of the forms is configured with the environment variables
+# CAPTCHA_PROVIDER, CAPTCHA_SITE_KEY and CAPTCHA_SECRET_KEY (see
+# derafu/captcha): the forms that are protected with a captcha, like the contact
+# form, fail until the site sets CAPTCHA_PROVIDER (CAPTCHA_PROVIDER=none says, on
+# purpose, that it has none).
+#
 # The language of the site is the parameter app.locale: the one of the
 # environment variable APP_LOCALE, or English. The site can also set
 # app.locale.default.
 
 imports:
     - { resource: '../../../content/resources/config/content-services.yaml' }
+    - { resource: '../../../captcha/resources/config/captcha-services.yaml' }
     - { resource: '../../../contact-form/resources/config/contact-form-services.yaml' }
     - { resource: '../../../csrf/resources/config/csrf-services.yaml' }
     - { resource: '../../../data-processor/resources/config/data-processor-services.yaml' }
@@ -36,6 +43,11 @@ imports:
 parameters:
     app.locale.default: 'en'
     app.locale: '%env(default:app.locale.default:APP_LOCALE)%'
+
+    # The lowest score that reCAPTCHA v3 accepts (CAPTCHA_PROVIDER=recaptcha-v3):
+    # from 0.0 (a bot) to 1.0 (a person). Stricter than the 0.5 that Google
+    # suggests as a start; a site sets CAPTCHA_MIN_SCORE to change it.
+    env(CAPTCHA_MIN_SCORE): '0.7'
 
     # Default of the environment variable that a site uses in its
     # derafu.content.config (cache.enabled: '%env(bool:CONTENT_CACHE_ENABLED)%').

@@ -16,6 +16,7 @@
     },
     "require": {
         "php": "^8.5",
+        "derafu/captcha": "dev-main",
         "derafu/contact-form": "dev-main",
         "derafu/content": "dev-main",
         "derafu/csrf": "dev-main",
