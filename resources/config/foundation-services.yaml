@@ -19,6 +19,13 @@
 # form, fail until the site sets CAPTCHA_PROVIDER (CAPTCHA_PROVIDER=none says, on
 # purpose, that it has none).
 #
+# Who the client of a request is (the limits of the requests and of the failed
+# logins count by it) is decided by ClientIpMiddleware. By default it is the
+# address of the connection, and no header is believed. Behind a proxy, say which
+# ones are trusted with HTTP_TRUSTED_PROXIES (addresses, ranges, or the shortcuts
+# `loopback`, `private` and `link-local`, separated by commas), and in which
+# headers the address comes with HTTP_CLIENT_IP_HEADERS (see derafu/http).
+#
 # The language of the site is the parameter app.locale: the one of the
 # environment variable APP_LOCALE, or English. The site can also set
 # app.locale.default.
@@ -66,6 +73,7 @@ services:
             $middlewares:
                 - '@Derafu\Http\Middleware\StaticFilesMiddleware'
                 - '@Derafu\Http\Middleware\RequestFactoryMiddleware'
+                - '@Derafu\Http\Middleware\ClientIpMiddleware'
                 - '@Derafu\Http\Middleware\RouterMiddleware'
                 - '@Mezzio\Session\SessionMiddleware'
                 - '@Mezzio\Flash\FlashMessageMiddleware'
