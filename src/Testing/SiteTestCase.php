@@ -20,6 +20,7 @@ use Nyholm\Psr7\ServerRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Smoke tests of a site: the kernel with the real configuration of `config/`,
@@ -135,16 +136,27 @@ abstract class SiteTestCase extends TestCase
      */
     protected function get(string $path, ?string $locale = null): array
     {
-        $response = $this->kernel($locale)->handle(new ServerRequest(
+        $response = $this->respond($path, $locale);
+
+        return [$response->getStatusCode(), (string) $response->getBody()];
+    }
+
+    /**
+     * Asks the site for a page, as a browser does: the whole response.
+     *
+     * @param string $path The path, like `/contact`.
+     * @param string|null $locale The language of the site (`APP_LOCALE`).
+     */
+    private function respond(string $path, ?string $locale = null): ResponseInterface
+    {
+        return $this->kernel($locale)->handle(new ServerRequest(
             'GET',
             'http://localhost/' . ltrim($path, '/'),
-            [],
+            ['Accept' => 'text/html,application/xhtml+xml'],
             null,
             '1.1',
             ['SERVER_PORT' => 80, 'SERVER_NAME' => 'localhost', 'REQUEST_SCHEME' => 'http', 'HTTP_HOST' => 'localhost']
         ));
-
-        return [$response->getStatusCode(), (string) $response->getBody()];
     }
 
     #[Test]
@@ -164,6 +176,29 @@ abstract class SiteTestCase extends TestCase
         [$status] = $this->get('/this-page-does-not-exist');
 
         $this->assertSame(404, $status);
+    }
+
+    #[Test]
+    public function theErrorOfAPageThatDoesNotExistIsThePageOfTheSite(): void
+    {
+        $response = $this->respond('/this-page-does-not-exist');
+        $body = (string) $response->getBody();
+
+        $this->assertSame(404, $response->getStatusCode());
+        // The text of the error (Markdown) is what is sent when the page of the
+        // errors can not be rendered: a serious failure, not a missing page.
+        $this->assertStringStartsWith('text/html', $response->getHeaderLine('Content-Type'), $body);
+        $this->assertStringNotContainsString('# An Error Occurred', $body);
+        $this->assertStringContainsString('404', $body);
+    }
+
+    #[Test]
+    public function theErrorPageIsNotAPageOfTheSite(): void
+    {
+        // It is the answer to an error, not something to ask for.
+        foreach (['/error', '/error404'] as $path) {
+            $this->assertSame(404, $this->get($path)[0], $path);
+        }
     }
 
     #[Test]

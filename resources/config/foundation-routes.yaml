@@ -6,10 +6,13 @@
 #     - { resource: '../vendor/derafu/foundation/resources/config/foundation-routes.yaml' }
 #
 # It imports the routes of the content and contact form packages and defines the
-# home page and the error page, which every site has in the same place
-# (templates/pages/home.html.twig and templates/error.html.twig). A site that
-# needs something different declares a route with the same name in its own
-# routes.yaml: its definition replaces the one of this file.
+# home page, which every site has in the same place
+# (templates/pages/home.html.twig). A site that needs something different
+# declares a route with the same name in its own routes.yaml: its definition
+# replaces the one of this file.
+#
+# The page of the errors is not a route (it is not a URL to ask for): see the
+# parameter http.error_pages in foundation-services.yaml.
 
 imports:
   - { resource: '../../../content/resources/config/content-routes.yaml' }
@@ -18,7 +21,3 @@ imports:
 homepage:
   path: /
   handler: '%kernel.project_dir%/templates/pages/home.html.twig'
-
-errorpage:
-  path: error
-  handler: '%kernel.project_dir%/templates/error.html.twig'

@@ -48,6 +48,13 @@ imports:
     - { resource: '../../../twig/resources/config/twig-services.yaml' }
 
 parameters:
+    # The page of the errors in HTML (see ProblemHandler of derafu/http): the
+    # template of every site. A site that has others sets the parameter in its
+    # own services.yaml (the whole map, it is not merged), with a page for a
+    # status (404, 500...) and `default` for the rest.
+    http.error_pages:
+        default: '%kernel.project_dir%/templates/error.html.twig'
+
     app.locale.default: 'en'
     app.locale: '%env(default:app.locale.default:APP_LOCALE)%'
 
