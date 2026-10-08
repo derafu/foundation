@@ -16,11 +16,17 @@ use Composer\InstalledVersions;
 use Derafu\Kernel\Environment;
 use Derafu\Renderer\Engine\Html\TwigHtmlEngine;
 use Derafu\Twig\Lint\RouteReferenceScanner;
+use DOMDocument;
+use DOMXPath;
+use FilesystemIterator;
 use Nyholm\Psr7\ServerRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use SplFileInfo;
 
 /**
  * Smoke tests of a site: the kernel with the real configuration of `config/`,
@@ -199,6 +205,50 @@ abstract class SiteTestCase extends TestCase
         foreach (['/error', '/error404'] as $path) {
             $this->assertSame(404, $this->get($path)[0], $path);
         }
+    }
+
+    #[Test]
+    public function theCodeInSrcIsMeasuredByCoverage(): void
+    {
+        $directory = self::projectDir();
+        $files = is_dir($directory . '/src')
+            ? new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory . '/src', FilesystemIterator::SKIP_DOTS))
+            : [];
+        $code = [];
+        foreach ($files as $file) {
+            if ($file instanceof SplFileInfo && $file->isFile() && $file->getExtension() === 'php') {
+                $code[] = $file->getPathname();
+            }
+        }
+
+        // A site without code has nothing to measure, and the report can be left
+        // out (PHPUnit refuses to make a report of no code).
+        if ($code === []) {
+            $this->addToAssertionCount(1);
+
+            return;
+        }
+
+        $config = null;
+        foreach (['phpunit.xml', 'phpunit.xml.dist'] as $name) {
+            if (is_file($directory . '/' . $name)) {
+                $config = $directory . '/' . $name;
+                break;
+            }
+        }
+        $this->assertNotNull($config, 'The site has no phpunit.xml.');
+
+        // A report that is commented out is not in the document that is read.
+        $document = new DOMDocument();
+        $this->assertTrue($document->load($config), 'The phpunit.xml of the site is not valid XML.');
+        $reports = (new DOMXPath($document))->query('/phpunit/coverage/report/*');
+
+        $this->assertGreaterThan(
+            0,
+            $reports === false ? 0 : $reports->length,
+            'The site has PHP code in src/ (' . count($code) . ' files) but its phpunit.xml has no active <coverage> with a <report>: '
+            . 'add it (see the sites that have code), so the tests say how much of the code they cover.'
+        );
     }
 
     #[Test]
