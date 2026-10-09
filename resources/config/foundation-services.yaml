@@ -121,6 +121,7 @@ services:
                     - '@Derafu\Twig\Extension\RoutingExtension'
                     - '@Derafu\Twig\Extension\TwigExtension'
                     - '@Derafu\Twig\Extension\TranslationExtension'
+                    - '@Derafu\Http\Twig\AppExtension'
                     - '@Derafu\Form\Renderer\FormTwigExtension'
                 paths:
                     - '%kernel.project_dir%/templates'
