@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Derafu\Foundation\Testing;
 
 use Composer\InstalledVersions;
+use Derafu\Content\Lint\ContentLinkAudit;
 use Derafu\Kernel\Environment;
 use Derafu\Renderer\Engine\Html\TwigHtmlEngine;
 use Derafu\Twig\Lint\RouteReferenceScanner;
@@ -40,6 +41,9 @@ use SplFileInfo;
  *   - No route of the site that can be asked without parameters answers with an
  *     error of the server (5xx), except the ones of `excludedPaths()`.
  *   - The templates of the site only refer to routes that the site defines.
+ *   - The links of the content (`resources/content/`) go to a page that the
+ *     site serves and to a fragment that the page has. A site without content
+ *     skips this test.
  *
  * The tests that are only about the site (its texts, its languages) are added
  * to the class of the site, that can use `get()` to ask for a page:
@@ -130,6 +134,33 @@ abstract class SiteTestCase extends TestCase
     protected function excludedPaths(): array
     {
         return [];
+    }
+
+    /**
+     * The links of the content that the test of the links does not report, as
+     * the `href`s (written as they are in the content) by the page they are in:
+     *
+     *     return ['/docs/component' => ['/export/excel', '/export/pdf']];
+     *
+     * It is for a link that goes nowhere on purpose, for example the sample
+     * values of an example that a page shows (a button with a `url` to a route
+     * that the example has and the site does not). A site that overrides it says
+     * in a comment why each page is there. By default there are none.
+     *
+     * @return array<string, list<string>>
+     */
+    protected function allowedLinksInContent(): array
+    {
+        return [];
+    }
+
+    /**
+     * The elements of the page whose links are tested: the ones that the
+     * content writes, not the menu or the footer, that every page repeats.
+     */
+    protected function contentSelector(): string
+    {
+        return '.markdown-body';
     }
 
     /**
@@ -252,6 +283,27 @@ abstract class SiteTestCase extends TestCase
     }
 
     #[Test]
+    public function theLinksOfTheContentGoSomewhere(): void
+    {
+        if (!is_dir(self::projectDir() . '/resources/content')) {
+            $this->markTestSkipped('The site has no content (resources/content).');
+        }
+
+        $audit = new ContentLinkAudit(function (string $path): ?string {
+            [$status, $body] = $this->get($path);
+
+            return $status === 200 ? $body : null;
+        });
+        $report = $audit->audit($this->pagesOfTheSitemap(), $this->allowedLinksInContent(), $this->contentSelector());
+
+        $this->assertFalse($report->nothingFound(), 'No link of the content was found: check contentSelector().');
+        $this->assertSame([], $report->describe($report->unreachablePages), 'Pages of the sitemap that are not served.');
+        $this->assertSame([], $report->describe($report->missingPages), 'Links to a page that the site does not serve.');
+        $this->assertSame([], $report->describe($report->missingAnchors), 'Links to a fragment that the page does not have.');
+        $this->assertSame([], $report->describe($report->formatLinks), 'Links to a format of a page, and not to the page.');
+    }
+
+    #[Test]
     public function noRouteOfTheSiteFailsInTheServer(): void
     {
         $paths = $this->routePaths();
@@ -288,6 +340,21 @@ abstract class SiteTestCase extends TestCase
 
         $this->assertSame([], $missing, "Routes that do not exist:\n" . implode("\n", $missing));
         $this->assertSame([], $dynamic, "Names that can not be checked by reading:\n" . implode("\n", $dynamic));
+    }
+
+    /**
+     * The pages of the site, the ones that its sitemap lists.
+     * @return list<string>
+     */
+    private function pagesOfTheSitemap(): array
+    {
+        [$status, $xml] = $this->get('/sitemap.xml');
+        $this->assertSame(200, $status, 'The site has content but no /sitemap.xml.');
+
+        preg_match_all('#<loc>([^<]+)</loc>#', $xml, $matches);
+        $paths = array_map(fn (string $url): string => (string) parse_url(html_entity_decode($url), PHP_URL_PATH), $matches[1]);
+
+        return array_values(array_unique(array_filter($paths, fn (string $path): bool => $path !== '')));
     }
 
     /**
