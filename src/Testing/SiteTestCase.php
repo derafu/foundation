@@ -164,6 +164,22 @@ abstract class SiteTestCase extends TestCase
     }
 
     /**
+     * The pages that a link of the content still has to reach, but whose
+     * fragment the test of the links does not check: a page whose content a
+     * browser builds afterwards (with JavaScript), so the site never serves
+     * an id that is in it.
+     *
+     * A site that overrides it says in a comment why each page is there. By
+     * default there are none.
+     *
+     * @return list<string>
+     */
+    protected function pagesWithoutFragmentChecksInContent(): array
+    {
+        return [];
+    }
+
+    /**
      * Asks the site for a page.
      *
      * @param string $path The path, like `/contact`.
@@ -294,7 +310,12 @@ abstract class SiteTestCase extends TestCase
 
             return $status === 200 ? $body : null;
         });
-        $report = $audit->audit($this->pagesOfTheSitemap(), $this->allowedLinksInContent(), $this->contentSelector());
+        $report = $audit->audit(
+            $this->pagesOfTheSitemap(),
+            $this->allowedLinksInContent(),
+            $this->contentSelector(),
+            $this->pagesWithoutFragmentChecksInContent()
+        );
 
         $this->assertFalse($report->nothingFound(), 'No link of the content was found: check contentSelector().');
         $this->assertSame([], $report->describe($report->unreachablePages), 'Pages of the sitemap that are not served.');
