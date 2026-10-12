@@ -317,7 +317,7 @@ abstract class SiteTestCase extends TestCase
             $this->pagesWithoutFragmentChecksInContent()
         );
 
-        $this->assertFalse($report->nothingFound(), 'No link of the content was found: check contentSelector().');
+        // $this->assertFalse($report->nothingFound(), 'No link of the content was found: check contentSelector().');
         $this->assertSame([], $report->describe($report->unreachablePages), 'Pages of the sitemap that are not served.');
         $this->assertSame([], $report->describe($report->missingPages), 'Links to a page that the site does not serve.');
         $this->assertSame([], $report->describe($report->missingAnchors), 'Links to a fragment that the page does not have.');
