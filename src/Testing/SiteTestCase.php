@@ -331,10 +331,23 @@ abstract class SiteTestCase extends TestCase
 
         $this->assertNotEmpty($paths, 'The site has no routes that can be asked.');
         foreach ($paths as $path) {
-            [$status] = $this->get($path);
+            [$status, $body] = $this->get($path);
 
-            $this->assertLessThan(500, $status, 'GET ' . $path);
+            $this->assertLessThan(500, $status, $this->describeFailure($path, $body));
         }
+    }
+
+    /**
+     * Message of a failed request: the path and, as plain text, the start of
+     * the response, so a 500 in CI says what failed (the exception of the
+     * error page in debug) and not only that it failed.
+     */
+    private function describeFailure(string $path, string $body): string
+    {
+        $text = preg_replace('/<(script|style)\b.*?<\/\1>/is', ' ', $body) ?? $body;
+        $text = trim((string) preg_replace('/\s+/', ' ', html_entity_decode((string) preg_replace('/<[^>]*>/', ' ', $text))));
+
+        return 'GET ' . $path . ($text !== '' ? ': ' . mb_substr($text, 0, 1500) : '');
     }
 
     #[Test]
