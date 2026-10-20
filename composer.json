@@ -36,6 +36,7 @@
         "derafu/support": "dev-main",
         "derafu/translation": "dev-main",
         "derafu/twig": "dev-main",
+        "derafu/twig-components": "dev-main",
         "guzzlehttp/guzzle": "^7.10",
         "mpdf/mpdf": "^8.3",
         "symfony/cache": "^8.1",

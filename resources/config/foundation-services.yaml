@@ -7,8 +7,9 @@
 #
 # It imports the services of the packages that derafu/foundation requires and
 # defines what every site repeats: the request handler with its middlewares (the
-# session and its CSRF tokens, which the forms need), the router, the renderer,
-# the Twig extensions and the translator. A site that
+# session and its CSRF tokens, which the forms need), the router, the renderer
+# (with the Twig components of derafu/twig-components), the Twig extensions and
+# the translator. A site that
 # needs something different declares the same service id in its own
 # services.yaml, after the import, and its definition replaces the one of this
 # file (the whole definition: its arguments are not merged).
@@ -46,6 +47,7 @@ imports:
     - { resource: '../../../support/resources/config/support-services.yaml' }
     - { resource: '../../../translation/resources/config/translation-services.yaml' }
     - { resource: '../../../twig/resources/config/twig-services.yaml' }
+    - { resource: '../../../twig-components/resources/config/twig-components-services.yaml' }
 
 parameters:
     # The page of the errors in HTML (see ProblemHandler of derafu/http): the
@@ -123,9 +125,10 @@ services:
                     - '@Derafu\Twig\Extension\TranslationExtension'
                     - '@Derafu\Http\Twig\AppExtension'
                     - '@Derafu\Form\Renderer\FormTwigExtension'
+                components: !tagged_iterator derafu_twig.component
                 paths:
                     - '%kernel.project_dir%/templates'
-                    - '%kernel.project_dir%/vendor/derafu/twig/resources/templates'
+                    - '%kernel.project_dir%/vendor/derafu/twig-components/resources/templates'
                     - '%kernel.project_dir%/vendor/derafu/content/resources/templates'
                     - '%kernel.project_dir%/vendor/derafu/contact-form/resources/templates'
 
