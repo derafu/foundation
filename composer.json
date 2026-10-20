@@ -29,7 +29,7 @@
         "derafu/form": "dev-main",
         "derafu/http": "dev-main",
         "derafu/kernel": "dev-main",
-        "derafu/markdown": "^2.0",
+        "derafu/markdown": "^2.1",
         "derafu/renderer": "dev-main",
         "derafu/routing": "dev-main",
         "derafu/session": "dev-main",
@@ -37,7 +37,7 @@
         "derafu/translation": "dev-main",
         "derafu/twig": "dev-main",
         "derafu/twig-components": "dev-main",
-        "guzzlehttp/guzzle": "^7.10",
+        "guzzlehttp/guzzle": "^7.16",
         "mpdf/mpdf": "^8.3",
         "symfony/cache": "^8.1",
         "symfony/yaml": "^8.1"
