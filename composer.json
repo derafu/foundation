@@ -40,7 +40,8 @@
         "guzzlehttp/guzzle": "^7.16",
         "mpdf/mpdf": "^8.3",
         "symfony/cache": "^8.1",
-        "symfony/yaml": "^8.1"
+        "symfony/yaml": "^8.1",
+        "utopia-php/openapi": "^0.2"
     },
     "suggest": {
         "phpunit/phpunit": "To test a site with Derafu\\Foundation\\Testing\\SiteTestCase."
