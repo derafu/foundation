@@ -1,0 +1,14 @@
+imports:
+    - { resource: '../vendor/derafu/foundation/resources/config/foundation-services.yaml' }
+
+parameters:
+    derafu.content.config:
+        title: 'Fixture site'
+        url: 'http://localhost'
+        plugins:
+            docs: ~
+            sitemap: ~
+
+services:
+    Derafu\TestsFoundation\Fixture\SiteController:
+        public: true

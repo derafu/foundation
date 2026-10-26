@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit>
+    <source><include><directory>src</directory></include></source>
+    <coverage><report><clover outputFile="var/coverage.xml"/></report></coverage>
+</phpunit>

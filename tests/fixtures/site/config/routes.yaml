@@ -1,0 +1,25 @@
+imports:
+    - { resource: '../vendor/derafu/content/resources/config/content-routes.yaml' }
+
+home:
+    path: /
+    handler: '%kernel.project_dir%/templates/pages/home.html.twig'
+contact:
+    path: /contact
+    handler: '%kernel.project_dir%/templates/pages/contact.html.twig'
+contact_success:
+    path: /contact/success
+    handler: '%kernel.project_dir%/templates/pages/success.html.twig'
+locale:
+    path: /locale
+    handler: '%kernel.project_dir%/templates/pages/locale.html.twig'
+status:
+    path: /status
+    handler: 'Derafu\TestsFoundation\Fixture\SiteController::status'
+submit:
+    path: /submit
+    methods: [POST]
+    handler: 'Derafu\TestsFoundation\Fixture\SiteController::status'
+item:
+    path: /item/{id}
+    handler: 'Derafu\TestsFoundation\Fixture\SiteController::status'

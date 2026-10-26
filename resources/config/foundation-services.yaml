@@ -97,6 +97,8 @@ services:
     Derafu\Routing\Contract\RouterInterface:
         class: Derafu\Routing\Router
         arguments:
+            # Use the internal generator; the public generator alias points back to this router.
+            $urlGenerator: null
             $parsers:
                 - '@Derafu\Routing\Parser\StaticParser'
                 - '@Derafu\Routing\Parser\DynamicParser'

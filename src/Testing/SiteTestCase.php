@@ -59,10 +59,10 @@ use SplFileInfo;
 abstract class SiteTestCase extends TestCase
 {
     /**
-     * Kernels already created, by language (a kernel is built with the
-     * language of the moment, and building it is what takes time).
+     * Kernels already created, by project and language. Building a kernel is
+     * expensive, but different projects must never share a container.
      *
-     * @var array<string, SiteKernel>
+     * @var array<string, array<string, SiteKernel>>
      */
     private static array $kernels = [];
 
@@ -87,8 +87,9 @@ abstract class SiteTestCase extends TestCase
         $locale = getenv('APP_LOCALE');
 
         self::useLocale(null);
-        self::$kernels[''] ??= self::createKernel();
-        self::$kernels['']->boot();
+        $project = static::projectDir();
+        self::$kernels[$project][''] ??= self::createKernel();
+        self::$kernels[$project]['']->boot();
 
         self::useLocale($locale);
     }
@@ -257,7 +258,7 @@ abstract class SiteTestCase extends TestCase
     #[Test]
     public function theCodeInSrcIsMeasuredByCoverage(): void
     {
-        $directory = self::projectDir();
+        $directory = static::projectDir();
         $files = is_dir($directory . '/src')
             ? new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory . '/src', FilesystemIterator::SKIP_DOTS))
             : [];
@@ -301,7 +302,7 @@ abstract class SiteTestCase extends TestCase
     #[Test]
     public function theLinksOfTheContentGoSomewhere(): void
     {
-        if (!is_dir(self::projectDir() . '/resources/content')) {
+        if (!is_dir(static::projectDir() . '/resources/content')) {
             $this->markTestSkipped('The site has no content (resources/content).');
         }
 
@@ -359,7 +360,7 @@ abstract class SiteTestCase extends TestCase
         $this->assertInstanceOf(TwigHtmlEngine::class, $engine);
 
         $references = (new RouteReferenceScanner($engine->getTwig()))
-            ->scanDirectory(self::projectDir() . '/templates')
+            ->scanDirectory(static::projectDir() . '/templates')
         ;
 
         $missing = [];
@@ -419,7 +420,7 @@ abstract class SiteTestCase extends TestCase
         // not only when it is built, so it is set on every call.
         self::useLocale($locale);
 
-        return self::$kernels[(string) $locale] ??= self::createKernel();
+        return self::$kernels[static::projectDir()][(string) $locale] ??= self::createKernel();
     }
 
     /**
@@ -431,7 +432,11 @@ abstract class SiteTestCase extends TestCase
         putenv($locale === null || $locale === false ? 'APP_LOCALE' : 'APP_LOCALE=' . $locale);
     }
 
-    private static function projectDir(): string
+    /**
+     * Root of the site under test. Override it when testing a different project
+     * from the root package that Composer installed.
+     */
+    protected static function projectDir(): string
     {
         return (string) realpath(InstalledVersions::getRootPackage()['install_path']);
     }
@@ -443,7 +448,7 @@ abstract class SiteTestCase extends TestCase
         return new SiteKernel(new Environment('test', true, [
             'APP_ENV' => 'test',
             'APP_DEBUG' => true,
-            'PROJECT_DIR' => self::projectDir(),
+            'PROJECT_DIR' => static::projectDir(),
             'URL_HOST' => 'localhost',
         ]));
     }
