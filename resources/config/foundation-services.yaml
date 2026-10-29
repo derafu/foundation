@@ -5,14 +5,11 @@
 #   imports:
 #       - { resource: '../vendor/derafu/foundation/resources/config/foundation-services.yaml' }
 #
-# It imports the services of the packages that derafu/foundation requires and
-# defines what every site repeats: the request handler with its middlewares (the
-# session and its CSRF tokens, which the forms need), the router, the renderer
-# (with the Twig components of derafu/twig-components), the Twig extensions and
-# the translator. A site that
-# needs something different declares the same service id in its own
-# services.yaml, after the import, and its definition replaces the one of this
-# file (the whole definition: its arguments are not merged).
+# Imports the shared services and contributes only site integration:
+# session/flash/CSRF middleware, site templates, routing/Twig helpers, locale
+# and application infrastructure. Packages contribute their own templates,
+# components and extensions through tags; no private renderer is constructed.
+# Applications may add contributions or override configuration after this import.
 #
 # The captcha of the forms is configured with the environment variables
 # CAPTCHA_PROVIDER, CAPTCHA_SITE_KEY and CAPTCHA_SECRET_KEY (see
@@ -38,27 +35,35 @@ imports:
     - { resource: '../../../csrf/resources/config/csrf-services.yaml' }
     - { resource: '../../../data-processor/resources/config/data-processor-services.yaml' }
     - { resource: '../../../form/resources/config/form-services.yaml' }
-    - { resource: '../../../http/resources/config/http-services.yaml' }
+    - { resource: '../../../http/resources/config/http-static-files-services.yaml' }
     - { resource: '../../../kernel/resources/config/kernel-services.yaml' }
-    - { resource: '../../../markdown/resources/config/markdown-services.yaml' }
-    - { resource: '../../../renderer/resources/config/renderer-services.yaml' }
-    - { resource: '../../../routing/resources/config/routing-services.yaml' }
+    - { resource: '../../../renderer/resources/config/renderer-markdown-services.yaml' }
+    - { resource: '../../../renderer/resources/config/renderer-pdf-services.yaml' }
+    - { resource: '../../../routing/resources/config/routing-filesystem-services.yaml' }
     - { resource: '../../../session/resources/config/session-services.yaml' }
     - { resource: '../../../support/resources/config/support-services.yaml' }
     - { resource: '../../../translation/resources/config/translation-services.yaml' }
-    - { resource: '../../../twig/resources/config/twig-services.yaml' }
-    - { resource: '../../../twig-components/resources/config/twig-components-services.yaml' }
+    - { resource: '../../../twig-components/resources/config/twig-components-twig-services.yaml' }
 
 parameters:
     # The page of the errors in HTML (see ProblemHandler of derafu/http): the
     # template of every site. A site that has others sets the parameter in its
     # own services.yaml (the whole map, it is not merged), with a page for a
     # status (404, 500...) and `default` for the rest.
-    http.error_pages:
+    derafu.http.error_pages:
         default: '%kernel.project_dir%/templates/error.html.twig'
+
+    derafu.http.static_files.directory: '%kernel.project_dir%/public/static'
+    derafu.routing.routes: '%routes%'
+    derafu.routing.filesystem.directories:
+        - '%kernel.project_dir%/templates/pages'
 
     app.locale.default: 'en'
     app.locale: '%env(default:app.locale.default:APP_LOCALE)%'
+
+    # Configure Translation's shared service while preserving the site's locale.
+    derafu.translation.default_locale: '%app.locale%'
+    derafu.translation.fallback_locales: ['en']
 
     # The lowest score that reCAPTCHA v3 accepts (CAPTCHA_PROVIDER=recaptcha-v3):
     # from 0.0 (a bot) to 1.0 (a person). Stricter than the 0.5 that Google
@@ -75,72 +80,34 @@ services:
         autoconfigure: true
         public: false
 
-    Psr\Http\Server\RequestHandlerInterface:
-        class: Derafu\Http\Service\RequestHandler
-        public: true
+    # Existing middleware IDs, with their original collaborators. Session owns
+    # persistence configuration; Foundation only chooses the pipeline positions.
+    Mezzio\Session\SessionMiddleware:
         arguments:
-            $middlewares:
-                - '@Derafu\Http\Middleware\StaticFilesMiddleware'
-                - '@Derafu\Http\Middleware\RequestFactoryMiddleware'
-                - '@Derafu\Http\Middleware\ClientIpMiddleware'
-                - '@Derafu\Http\Middleware\RouterMiddleware'
-                - '@Mezzio\Session\SessionMiddleware'
-                - '@Mezzio\Flash\FlashMessageMiddleware'
-                - '@Derafu\Csrf\CsrfSessionMiddleware'
-                - '@Derafu\Http\Middleware\DispatcherMiddleware'
-                - '@Derafu\Http\Middleware\ResponseNormalizerMiddleware'
+            $persistence: '@Mezzio\Session\SessionPersistenceInterface'
+        tags:
+            - { name: derafu_http.middleware, priority: 500 }
 
-    Derafu\Http\Middleware\StaticFilesMiddleware:
+    Mezzio\Flash\FlashMessageMiddleware:
+        tags:
+            - { name: derafu_http.middleware, priority: 450 }
+
+    Derafu\Csrf\CsrfSessionMiddleware:
         arguments:
-            $directory: '%kernel.project_dir%/public/static'
+            $manager: '@Derafu\Csrf\Contract\SessionCsrfTokenManagerInterface'
+        tags:
+            - { name: derafu_http.middleware, priority: 400 }
 
-    Derafu\Routing\Contract\RouterInterface:
-        class: Derafu\Routing\Router
+    Derafu\Foundation\Provider\SiteTemplatePathProvider:
         arguments:
-            # Use the internal generator; the public generator alias points back to this router.
-            $urlGenerator: null
-            $parsers:
-                - '@Derafu\Routing\Parser\StaticParser'
-                - '@Derafu\Routing\Parser\DynamicParser'
-                - '@Derafu\Routing\Parser\FileSystemParser'
-            $routes: '%routes%'
+            $directory: '%kernel.project_dir%/templates'
+        tags:
+            - { name: derafu_twig.template_path_provider, priority: 300 }
 
-    Derafu\Routing\Parser\StaticParser: ~
-
-    Derafu\Routing\Parser\DynamicParser: ~
-
-    Derafu\Routing\Parser\FileSystemParser:
-        arguments:
-            $directories:
-                - '%kernel.project_dir%/templates/pages'
-            $extensions: ['.html.twig', '.md']
-
-    Derafu\Renderer\Contract\RendererInterface:
-        factory: ['Derafu\Renderer\Factory\RendererFactory', 'create']
-        lazy: true
-        arguments:
-            $options:
-                engines: ['twig', 'markdown', 'pdf']
-                extensions:
-                    - '@Derafu\Twig\Extension\RoutingExtension'
-                    - '@Derafu\Twig\Extension\TwigExtension'
-                    - '@Derafu\Twig\Extension\TranslationExtension'
-                    - '@Derafu\Http\Twig\AppExtension'
-                    - '@Derafu\Form\Renderer\FormTwigExtension'
-                components: !tagged_iterator derafu_twig.component
-                paths:
-                    - '%kernel.project_dir%/templates'
-                    - '%kernel.project_dir%/vendor/derafu/twig-components/resources/templates'
-                    - '%kernel.project_dir%/vendor/derafu/content/resources/templates'
-                    - '%kernel.project_dir%/vendor/derafu/contact-form/resources/templates'
-
-    Derafu\Twig\Extension\RoutingExtension:
+    Derafu\Foundation\Bridge\Twig\FoundationExtensionProvider:
         arguments:
             $router: '@Derafu\Routing\Contract\RouterInterface'
-
-    Derafu\Twig\Extension\TwigExtension: ~
-
-    Derafu\Twig\Extension\TranslationExtension: ~
+        tags: ['derafu_twig.extension_provider']
 
     # HTTP client (PSR-18) and PSR-17 factories, used by the packages that make
     # requests (for example derafu/contact-form).
@@ -150,11 +117,12 @@ services:
             $config:
                 timeout: 10
 
-    GuzzleHttp\Psr7\HttpFactory: ~
+    # Both PSR-17 contracts use one shared implementation.
+    Psr\Http\Message\RequestFactoryInterface:
+        class: GuzzleHttp\Psr7\HttpFactory
 
-    Psr\Http\Message\RequestFactoryInterface: '@GuzzleHttp\Psr7\HttpFactory'
-
-    Psr\Http\Message\StreamFactoryInterface: '@GuzzleHttp\Psr7\HttpFactory'
+    Psr\Http\Message\StreamFactoryInterface:
+        alias: Psr\Http\Message\RequestFactoryInterface
 
     # Cache pool (PSR-6) of the application, in the cache directory of the kernel.
     # The packages that cache what they read (the keys of Keycloak in derafu/auth,
@@ -165,10 +133,3 @@ services:
         arguments:
             $namespace: 'derafu'
             $directory: '%kernel.cache_dir%'
-
-    Symfony\Component\Translation\Translator:
-        factory: ['Derafu\Translation\TranslatorFactory', 'create']
-        arguments:
-            $defaultLocale: '%app.locale%'
-            $fallbackLocales: ['en']
-            $resourceProviders: !tagged_iterator derafu_translation.resource_provider

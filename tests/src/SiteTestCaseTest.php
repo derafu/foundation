@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\TestsFoundation;
 
+use Derafu\Foundation\Bridge\Twig\FoundationExtensionProvider;
+use Derafu\Foundation\Provider\SiteTemplatePathProvider;
 use Derafu\Foundation\Testing\SiteKernel;
 use Derafu\Foundation\Testing\SiteTestCase;
 use Derafu\TestsFoundation\Fixture\ProbeSiteCase;
@@ -31,6 +33,8 @@ use Symfony\Component\Filesystem\Filesystem;
  * Exercises the reusable checks themselves: a valid site passes, and defective
  * sites produce the assertion failures that consuming applications rely on.
  */
+#[UsesClass(FoundationExtensionProvider::class)]
+#[UsesClass(SiteTemplatePathProvider::class)]
 #[CoversClass(SiteTestCase::class)]
 #[UsesClass(SiteKernel::class)]
 #[RunTestsInSeparateProcesses]

@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace Derafu\TestsFoundation\Fixture;
 
+use Derafu\Form\Contract\Csrf\CsrfTokenManagerInterface;
+use Derafu\Form\Contract\Renderer\FormRendererInterface;
+use Derafu\Http\Contract\RequestStackInterface;
 use Derafu\Http\Kernel;
 use Derafu\Http\Middleware\StaticFilesMiddleware;
 use Derafu\Renderer\Contract\RendererInterface;
@@ -21,10 +24,7 @@ use Derafu\Routing\Contract\UrlGeneratorInterface;
 use Derafu\Routing\Parser\DynamicParser;
 use Derafu\Routing\Parser\FileSystemParser;
 use Derafu\Routing\Parser\StaticParser;
-use Derafu\Twig\Extension\RoutingExtension;
-use Derafu\Twig\Extension\TranslationExtension;
-use Derafu\Twig\Extension\TwigExtension;
-use GuzzleHttp\Psr7\HttpFactory;
+use Derafu\Twig\Contract\TwigServiceInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -33,7 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\Translation\Translator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Uses the real HTTP kernel setup and exposes Foundation's declared services
@@ -52,10 +52,11 @@ final class FoundationKernel extends Kernel
 
         foreach ([
             RouterInterface::class, UrlGeneratorInterface::class, RouteRegistrarInterface::class,
-            RendererInterface::class, RequestHandlerInterface::class, Translator::class,
-            ClientInterface::class, CacheItemPoolInterface::class, HttpFactory::class,
+            RendererInterface::class, RequestHandlerInterface::class, TranslatorInterface::class,
+            ClientInterface::class, CacheItemPoolInterface::class,
             RequestFactoryInterface::class, StreamFactoryInterface::class,
-            RoutingExtension::class, TranslationExtension::class, TwigExtension::class,
+            TwigServiceInterface::class, FormRendererInterface::class,
+            CsrfTokenManagerInterface::class, RequestStackInterface::class,
             StaticFilesMiddleware::class, StaticParser::class, DynamicParser::class, FileSystemParser::class,
         ] as $id) {
             $configurator->services()->alias('test.' . $id, $id)->public();

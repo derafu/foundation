@@ -35,6 +35,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Translation\Translator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Loads the complete Foundation configuration in a Composer-shaped installation.
@@ -139,9 +140,8 @@ TWIG);
         $this->assertInstanceOf(CacheItemPoolInterface::class, $cache);
         $this->assertTrue($cache->save($cache->getItem('foundation-services')->set('stored')));
         $this->assertSame('stored', $cache->getItem('foundation-services')->get());
-        $factory = $container->get('test.' . HttpFactory::class);
+        $factory = $container->get('test.' . RequestFactoryInterface::class);
         $this->assertInstanceOf(HttpFactory::class, $factory);
-        $this->assertSame($factory, $container->get('test.' . RequestFactoryInterface::class));
         $this->assertSame($factory, $container->get('test.' . StreamFactoryInterface::class));
         $this->assertSame('/health', $factory->createRequest('GET', '/health')->getUri()->getPath());
         $this->assertSame('body', (string) $factory->createStream('body'));
@@ -150,7 +150,7 @@ TWIG);
     public function testTheTranslatorAndRendererConsumeTheImportedProviderAndComponentTags(): void
     {
         $container = $this->container();
-        $translator = $container->get('test.' . Translator::class);
+        $translator = $container->get('test.' . TranslatorInterface::class);
         $this->assertInstanceOf(Translator::class, $translator);
         $this->assertSame(
             'No se encontró ninguna ruta para "/missing".',

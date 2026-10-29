@@ -12,7 +12,7 @@
 # replaces the one of this file.
 #
 # The page of the errors is not a route (it is not a URL to ask for): see the
-# parameter http.error_pages in foundation-services.yaml.
+# parameter derafu.http.error_pages in foundation-services.yaml.
 
 imports:
   - { resource: '../../../content/resources/config/content-routes.yaml' }

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\TestsFoundation;
 
+use Derafu\Foundation\Bridge\Twig\FoundationExtensionProvider;
+use Derafu\Foundation\Provider\SiteTemplatePathProvider;
 use Derafu\Foundation\Testing\SiteKernel;
 use Derafu\Kernel\Environment;
 use Derafu\TestsFoundation\Fixture\Website;
@@ -19,8 +21,11 @@ use Nyholm\Psr7\ServerRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
+#[UsesClass(FoundationExtensionProvider::class)]
+#[UsesClass(SiteTemplatePathProvider::class)]
 #[CoversClass(SiteKernel::class)]
 final class SiteKernelTest extends TestCase
 {
